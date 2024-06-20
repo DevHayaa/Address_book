@@ -10,11 +10,21 @@ use App\Http\Controllers\User\UserDashBoardController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminRegistationController;
 use App\Http\Controllers\Admin\AdminDashBoardController;
+use App\Http\Controllers\JewelleryController;
+use App\Http\Controllers\AboutController;
 use App\Http\Middleware\ClearCookies;
 
 route::get('/',[HomeController::class,'home'])->name('home');
 route::get('wishlist',[WishlistController::class,'wishlist'])->name('wishlist');
 route::get('cart',[CartController::class,'cart'])->name('cart');
+route::get('jewellery/anklets',[JewelleryController::class,'anklets'])->name('anklets');
+route::get('jewellery/rings',[JewelleryController::class,'rings'])->name('rings');
+route::get('jewellery/earRings',[JewelleryController::class,'earRings'])->name('earRings');
+route::get('jewellery/bangles',[JewelleryController::class,'bangles'])->name('bangles');
+route::get('jewellery/necklace',[JewelleryController::class,'necklace'])->name('necklace');
+route::get('about',[AboutController::class,'about'])->name('about');
+route::get('contact',[AboutController::class,'contact'])->name('contact');
+
 
 
 

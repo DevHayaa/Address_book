@@ -1,14 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head> 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Admin Dashboard </title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="all,follow">
-    <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="/adminCss/vendor/bootstrap/css/bootstrap.min.css">
+     <!-- Bootstrap CSS-->
+ <link rel="stylesheet" href="/adminCss/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="/adminCss/vendor/font-awesome/css/font-awesome.min.css">
     <!-- Custom Font Icons CSS-->
@@ -18,13 +13,18 @@
     <!-- theme stylesheet-->
     <link rel="stylesheet" href="/adminCss/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="/adminCss/css/custom.css">
-    <!-- Favicon-->
-    <link rel="shortcut icon" href="/adminCss/img/favicon.ico">
-    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
-  </head>
+    <link rel="stylesheet" href="/adminCss/css/custom.css">  </head>
+
+       <!-- JavaScript files-->
+       <script src="/adminCss/vendor/jquery/jquery.min.js"></script>
+    <script src="/adminCss/vendor/popper.js/umd/popper.min.js"> </script>
+    <script src="/adminCss/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/adminCss/vendor/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="/adminCss/vendor/chart.js/Chart.min.js"></script>
+    <script src="/adminCss/vendor/jquery-validation/jquery.validate.min.js"></script>
+    <script src="/adminCss/js/charts-home.js"></script>
+    <script src="/adminCss/js/front.js"></script>
+</head>
   <body>
     <header class="header">   
       <nav class="navbar navbar-expand-lg">
@@ -471,14 +471,5 @@
         </footer>
       </div>
     </div>
-    <!-- JavaScript files-->
-    <script src="/adminCss/vendor/jquery/jquery.min.js"></script>
-    <script src="/adminCss/vendor/popper.js/umd/popper.min.js"> </script>
-    <script src="/adminCss/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/adminCss/vendor/jquery.cookie/jquery.cookie.js"> </script>
-    <script src="/adminCss/vendor/chart.js/Chart.min.js"></script>
-    <script src="/adminCss/vendor/jquery-validation/jquery.validate.min.js"></script>
-    <script src="/adminCss/js/charts-home.js"></script>
-    <script src="/adminCss/js/front.js"></script>
   </body>
 </html>

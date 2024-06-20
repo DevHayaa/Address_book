@@ -3,8 +3,6 @@
  
     <!DOCTYPE html>
      <html class="no-js" lang="en">
-
-<!-- belle/register.html   11 Nov 2019 12:22:27 GMT -->
 <head>
 @include('cssjss')
 </head>
@@ -77,6 +75,4 @@
      <script src="assets/js/main.js"></script>
 </div>
 </body>
-
-<!-- belle/register.html   11 Nov 2019 12:22:27 GMT -->
 </html>

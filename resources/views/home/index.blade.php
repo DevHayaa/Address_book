@@ -1,20 +1,8 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
-
-<!-- belle/home8-jewellery.html   11 Nov 2019 12:30:11 GMT -->
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Jeweller and cosmetics</title>
-<meta name="description" content="description">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Plugins CSS -->
-<link rel="stylesheet" href="assets/css/plugins.css">
-<!-- Bootstap CSS -->
-<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-<!-- Main Style CSS -->
-<link rel="stylesheet" href="assets/css/style.css">
-<link rel="stylesheet" href="assets/css/responsive.css">
+    <title>Gems & Glow</title>
+@include('cssjss')
 </head>
 <body class="template-index home8-jewellery belle">
 <div id="pre-loader">
