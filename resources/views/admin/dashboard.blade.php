@@ -2,28 +2,7 @@
 <html>
   <head> 
     <title>Admin Dashboard </title>
-     <!-- Bootstrap CSS-->
- <link rel="stylesheet" href="/adminCss/vendor/bootstrap/css/bootstrap.min.css">
-    <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="/adminCss/vendor/font-awesome/css/font-awesome.min.css">
-    <!-- Custom Font Icons CSS-->
-    <link rel="stylesheet" href="/adminCss/css/font.css">
-    <!-- Google fonts - Muli-->
-    <link rel="stylesheet" href="/adminCss/https://fonts.googleapis.com/css?family=Muli:300,400,700">
-    <!-- theme stylesheet-->
-    <link rel="stylesheet" href="/adminCss/css/style.default.css" id="theme-stylesheet">
-    <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="/adminCss/css/custom.css">  </head>
-
-       <!-- JavaScript files-->
-       <script src="/adminCss/vendor/jquery/jquery.min.js"></script>
-    <script src="/adminCss/vendor/popper.js/umd/popper.min.js"> </script>
-    <script src="/adminCss/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/adminCss/vendor/jquery.cookie/jquery.cookie.js"> </script>
-    <script src="/adminCss/vendor/chart.js/Chart.min.js"></script>
-    <script src="/adminCss/vendor/jquery-validation/jquery.validate.min.js"></script>
-    <script src="/adminCss/js/charts-home.js"></script>
-    <script src="/adminCss/js/front.js"></script>
+    @include('cssjss')
 </head>
   <body>
     <header class="header">   
@@ -69,8 +48,8 @@
         <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
         <ul class="list-unstyled">
                 <li class="active"><a href="index.html"> <i class="icon-home"></i>Home </a></li>
-                <li><a href=""> <i class="icon-grid"></i>Customer</a></li>
-                <li><a href=""> <i class="icon-grid"></i>Categories</a></li>
+                <li><a href="{{route('category')}}"> <i class="icon-grid"></i>Categories</a></li>
+                <li><a href=""> <i class="icon-grid"></i>Sub-Categories</a></li>
                 <li><a href=""> <i class="fa fa-bar-chart"></i>Products</a></li>
                 <li><a href=""> <i class="icon-padnote"></i>Order</a></li>
                 <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Example dropdown </a>

@@ -10,6 +10,7 @@ use App\Http\Controllers\User\UserDashBoardController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminRegistationController;
 use App\Http\Controllers\Admin\AdminDashBoardController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\JewelleryController;
 use App\Http\Controllers\AboutController;
 use App\Http\Middleware\ClearCookies;
@@ -24,6 +25,13 @@ route::get('jewellery/bangles',[JewelleryController::class,'bangles'])->name('ba
 route::get('jewellery/necklace',[JewelleryController::class,'necklace'])->name('necklace');
 route::get('about',[AboutController::class,'about'])->name('about');
 route::get('contact',[AboutController::class,'contact'])->name('contact');
+
+route::get('category',[CategoryController::class,'category'])->name('category');
+route::get('addCategory',[CategoryController::class,'addCategory'])->name('addCategory');
+Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+route::get('deleteCategory/{id}',[CategoryController::class,'deleteCategory'])->name('deleteCategory');
+route::get('editCategory/{id}',[CategoryController::class,'editCategory'])->name('editCategory');
+route::post('updateCategory/{id}',[CategoryController::class,'updateCategory'])->name('updateCategory');
 
 
 
