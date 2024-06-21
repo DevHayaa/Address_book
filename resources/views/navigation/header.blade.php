@@ -155,8 +155,8 @@
     <!--Desktop Menu-->
     <nav class="belowlogo" id="AccessibleNav">
         <ul id="siteNav" class="site-nav medium center hidearrow">
-            <li class="lvl1 parent megamenu"><a href="#">Home <i class="anm anm-angle-down-l"></i></a>
-            </li>
+            <!-- <li class="lvl1 parent megamenu"><a href="#">Home <i class="anm anm-angle-down-l"></i></a>
+            </li> -->
         <li class="lvl1 parent dropdown"><a href="#">Jewellery <i class="anm anm-angle-down-l"></i></a>
           <ul class="dropdown">
             <li><a href="{{route('anklets')}}" class="site-nav">Anklets</a></li>
