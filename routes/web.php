@@ -11,6 +11,8 @@ use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminRegistationController;
 use App\Http\Controllers\Admin\AdminDashBoardController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\JewelleryController;
 use App\Http\Controllers\AboutController;
 use App\Http\Middleware\ClearCookies;
@@ -33,8 +35,20 @@ route::get('deleteCategory/{id}',[CategoryController::class,'deleteCategory'])->
 route::get('editCategory/{id}',[CategoryController::class,'editCategory'])->name('editCategory');
 route::post('updateCategory/{id}',[CategoryController::class,'updateCategory'])->name('updateCategory');
 
+route::get('subCategory',[SubCategoryController::class,'subCategory'])->name('subCategory');
+route::get('addSubCategory',[SubCategoryController::class,'addSubCategory'])->name('addSubCategory');
+Route::post('/subCategories', [SubCategoryController::class, 'subStore'])->name('subCategories.store');
+route::get('deleteSubCategory/{id}',[SubCategoryController::class,'deleteSubCategory'])->name('deleteSubCategory');
+route::get('editSubCategory/{id}',[SubCategoryController::class,'editSubCategory'])->name('editSubCategory');
+route::post('updateSubCategory/{id}',[SubCategoryController::class,'updateSubCategory'])->name('updateSubCategory');
 
 
+route::get('product',[ProductController::class,'product'])->name('products');
+route::get('addProduct',[ProductController::class,'addProduct'])->name('addProduct');
+Route::post('/products', [ProductController::class, 'productStore'])->name('product.store');
+route::get('deleteProduct/{id}',[ProductController::class,'deleteProduct'])->name('deleteProduct');
+route::get('editProduct/{id}',[ProductController::class,'editProduct'])->name('editProduct');
+route::post('updateProduct/{id}',[ProductController::class,'updateProduct'])->name('updateProduct');
 
 // Admin Authentication Routes
 Route::get('/admin/login', [AdminLoginController::class, 'index'])->name('admin.login')->middleware('clear_cookies');;

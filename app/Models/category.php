@@ -13,4 +13,8 @@ class category extends Model
         'category_description',
         
     ];
+    public function subCategories()
+    {
+        return $this->hasMany(SubCategory::class);
+    }
 }

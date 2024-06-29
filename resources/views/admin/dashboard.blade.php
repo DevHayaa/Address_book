@@ -49,8 +49,8 @@
         <ul class="list-unstyled">
                 <li class="active"><a href="index.html"> <i class="icon-home"></i>Home </a></li>
                 <li><a href="{{route('category')}}"> <i class="icon-grid"></i>Categories</a></li>
-                <li><a href=""> <i class="icon-grid"></i>Sub-Categories</a></li>
-                <li><a href=""> <i class="fa fa-bar-chart"></i>Products</a></li>
+                <li><a href="{{route('subCategory')}}"> <i class="icon-grid"></i>Sub-Categories</a></li>
+                <li><a href="{{route('products')}}"> <i class="fa fa-bar-chart"></i>Products</a></li>
                 <li><a href=""> <i class="icon-padnote"></i>Order</a></li>
                 <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Example dropdown </a>
                   <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
