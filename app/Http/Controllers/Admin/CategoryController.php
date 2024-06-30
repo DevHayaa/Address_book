@@ -26,7 +26,7 @@ class CategoryController extends Controller
         $category->category_description = $request->description;
         $category->save();
         toastr()->timeOut(1000)->closeButton()->success('Category added succesfully.');
-        return redirect()->back();
+        return redirect()->route('category');
     }
 
     public function deleteCategory($id)

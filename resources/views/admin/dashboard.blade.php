@@ -2,7 +2,7 @@
 <html>
   <head> 
     <title>Admin Dashboard </title>
-    @include('cssjss')
+    @include('adminCssjs')
 </head>
   <body>
     <header class="header">   

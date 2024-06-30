@@ -1,5 +1,4 @@
-
-@include('cssjss')
+@include('adminCssJs')
 <div class="page-content">
         <!-- Page Header-->
         <div class="page-header no-margin-bottom">

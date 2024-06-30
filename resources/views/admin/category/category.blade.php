@@ -1,5 +1,4 @@
-
-@include('cssjss')
+@include('adminCssJs')
 <div class="page-content">
         <!-- Page Header-->
         <div class="page-header no-margin-bottom">
@@ -33,7 +32,7 @@
                       <tbody>
                         @foreach($data as $data)
                         <tr>
-                          <th scope="row">1</th>
+                          <th scope="row"></th>
                           <td>{{$data->category_name}}</td>
                           <td>{{$data->category_description}}</td>
                           <td><a href="{{route('editCategory',$data->id)}}" class="btn btn-primary">Edit</a>

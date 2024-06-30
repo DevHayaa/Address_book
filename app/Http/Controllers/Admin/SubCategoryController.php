@@ -30,7 +30,8 @@ class SubCategoryController extends Controller
         $SubCategory->category_id = $request->category_id; // Save the category_id
         $SubCategory->save();
         toastr()->timeOut(1000)->closeButton()->success('SubCategory added successfully.');
-        return redirect()->back();
+        return redirect()->route('subCategory');
+        
     }
 
     public function deleteSubCategory($id)

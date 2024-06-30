@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -10,9 +9,17 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
-    public function product()
+    public function product(Request $request)
     {
-        $products = Product::with('subCategory')->get();
+        $query = Product::with('subCategory');
+        
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('product_name', 'LIKE', "%{$search}%")
+                  ->orWhere('product_description', 'LIKE', "%{$search}%");
+        }
+
+        $products = $query->paginate(3); // Adjust to 3 products per page
         return view('admin.product.product', compact('products'));
     }
 
@@ -33,7 +40,6 @@ class ProductController extends Controller
             'subcategory_id' => 'required|exists:sub_categories,id',
         ]);
 
-        // Handle image upload
         if ($request->hasFile('image')) {
             $imageName = time() . '.' . $request->image->extension();
             $request->image->storeAs('images', $imageName, 'public');
@@ -41,7 +47,6 @@ class ProductController extends Controller
             $imageName = null;
         }
 
-        // Create new product
         Product::create([
             'product_name' => $request->product_name,
             'product_description' => $request->product_description,
@@ -74,7 +79,6 @@ class ProductController extends Controller
 
         $product = Product::findOrFail($id);
 
-        // Handle image upload
         if ($request->hasFile('image')) {
             // Delete old image if exists
             if ($product->image) {
@@ -87,7 +91,6 @@ class ProductController extends Controller
             $imageName = $product->image;
         }
 
-        // Update product
         $product->update([
             'product_name' => $request->product_name,
             'product_description' => $request->product_description,
@@ -113,4 +116,6 @@ class ProductController extends Controller
 
         return redirect()->route('products')->with('success', 'Product deleted successfully.');
     }
+
+    
 }

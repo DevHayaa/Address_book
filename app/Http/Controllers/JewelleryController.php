@@ -1,29 +1,100 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
+use App\Models\SubCategory;
 
 class JewelleryController extends Controller
 {
-    public function anklets()
+    public function home(Request $request)
     {
-        return view('categories.jewellery.anklets');
+        $query = Product::with('subCategory');
+
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('product_name', 'LIKE', "%{$search}%")
+                  ->orWhere('product_description', 'LIKE', "%{$search}%");
+        }
+
+        $products = $query->paginate(6); // Adjust to the number of products per page
+        return view('home', compact('products'));
     }
-    public function bangles()
+
+    public function anklets(Request $request)
     {
-        return view('categories.jewellery.bangles');
+        $subcategory = SubCategory::where('subCategory_name', 'anklets')->firstOrFail();
+        $query = Product::with('subCategory')->where('subcategory_id', $subcategory->id);
+
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('product_name', 'LIKE', "%{$search}%")
+                  ->orWhere('product_description', 'LIKE', "%{$search}%");
+        }
+
+        $products = $query->paginate(6); // Adjust to the number of products per page
+        return view('categories.jewellery.anklets', compact('products'));
     }
-    public function rings()
+
+    public function rings(Request $request)
     {
-        return view('categories.jewellery.rings');
+        $subcategory = SubCategory::where('subCategory_name', 'rings')->firstOrFail();
+        $query = Product::with('subCategory')->where('subcategory_id', $subcategory->id);
+
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('product_name', 'LIKE', "%{$search}%")
+                  ->orWhere('product_description', 'LIKE', "%{$search}%");
+        }
+
+        $products = $query->paginate(6); // Adjust to the number of products per page
+        return view('categories.jewellery.rings', compact('products'));
     }
-    public function earRings()
+
+    // Similar methods for other subcategories...
+
+    public function bangles(Request $request)
     {
-        return view('categories.jewellery.earRings');
+        $subcategory = SubCategory::where('subCategory_name', 'bangles')->firstOrFail();
+        $query = Product::with('subCategory')->where('subcategory_id', $subcategory->id);
+
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('product_name', 'LIKE', "%{$search}%")
+                  ->orWhere('product_description', 'LIKE', "%{$search}%");
+        }
+
+        $products = $query->paginate(6); // Adjust to the number of products per page
+        return view('categories.jewellery.bangles', compact('products'));
     }
-    public function necklace()
+
+    public function earRings(Request $request)
     {
-        return view('categories.jewellery.nacklace');
+        $subcategory = SubCategory::where('subCategory_name', 'earRings')->firstOrFail();
+        $query = Product::with('subCategory')->where('subcategory_id', $subcategory->id);
+
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('product_name', 'LIKE', "%{$search}%")
+                  ->orWhere('product_description', 'LIKE', "%{$search}%");
+        }
+
+        $products = $query->paginate(6); // Adjust to the number of products per page
+        return view('categories.jewellery.earRings', compact('products'));
+    }
+
+    public function necklace(Request $request)
+    {
+        $subcategory = SubCategory::where('subCategory_name', 'necklace')->firstOrFail();
+        $query = Product::with('subCategory')->where('subcategory_id', $subcategory->id);
+
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('product_name', 'LIKE', "%{$search}%")
+                  ->orWhere('product_description', 'LIKE', "%{$search}%");
+        }
+
+        $products = $query->paginate(6); // Adjust to the number of products per page
+        return view('categories.jewellery.necklace', compact('products'));
     }
 }

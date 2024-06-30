@@ -43,12 +43,18 @@ route::get('editSubCategory/{id}',[SubCategoryController::class,'editSubCategory
 route::post('updateSubCategory/{id}',[SubCategoryController::class,'updateSubCategory'])->name('updateSubCategory');
 
 
-route::get('product',[ProductController::class,'product'])->name('products');
-route::get('addProduct',[ProductController::class,'addProduct'])->name('addProduct');
+Route::get('product', [ProductController::class, 'product'])->name('products');
+Route::get('addProduct', [ProductController::class, 'addProduct'])->name('addProduct');
 Route::post('/products', [ProductController::class, 'productStore'])->name('product.store');
-route::get('deleteProduct/{id}',[ProductController::class,'deleteProduct'])->name('deleteProduct');
-route::get('editProduct/{id}',[ProductController::class,'editProduct'])->name('editProduct');
-route::post('updateProduct/{id}',[ProductController::class,'updateProduct'])->name('updateProduct');
+Route::get('deleteProduct/{id}', [ProductController::class, 'deleteProduct'])->name('deleteProduct');
+Route::get('editProduct/{id}', [ProductController::class, 'editProduct'])->name('editProduct');
+Route::post('updateProduct/{id}', [ProductController::class, 'updateProduct'])->name('updateProduct');
+
+Route::get('quick-view/{id}', [ProductController::class, 'quickView'])->name('quick-view');
+
+
+
+
 
 // Admin Authentication Routes
 Route::get('/admin/login', [AdminLoginController::class, 'index'])->name('admin.login')->middleware('clear_cookies');;
@@ -61,3 +67,17 @@ Route::middleware(['auth', 'admin'])->group(function () {
      
 });
 Route::post('logout', [LoginController::class, 'logout'])->middleware('clear.session.cookies')->name('logout');
+
+
+// User Authentication Routes
+Route::get('/login', [UserLoginController::class, 'index'])->name('login')->middleware('clear_cookies');;
+Route::post('/check', [UserLoginController::class, 'check'])->name('check');
+Route::get('/register', [UserRegistationController::class, 'create'])->name('register');
+Route::post('/register', [UserRegistationController::class, 'store'])->name('user.register');
+//middleware implementation
+Route::middleware(['auth', 'user'])->group(function () {
+    
+ Route::get('/user/dashboard', [UserDashBoardController::class, 'dashboard'])->name('user.dashboard');
+ Route::get('/records', [RecordViewController::class, 'index'])->name('record.index');
+ Route::post('/logout', [UserLoginController::class, 'logout'])->name('user.logout')->middleware('clear_cookies');
+});
