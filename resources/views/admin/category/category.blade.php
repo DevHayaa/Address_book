@@ -32,7 +32,7 @@
                       <tbody>
                         @foreach($data as $data)
                         <tr>
-                          <th scope="row"></th>
+                        <th scope="row">{{ $loop->iteration }}</th>
                           <td>{{$data->category_name}}</td>
                           <td>{{$data->category_description}}</td>
                           <td><a href="{{route('editCategory',$data->id)}}" class="btn btn-primary">Edit</a>

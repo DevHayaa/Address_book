@@ -33,7 +33,7 @@
                       <tbody>
                         @foreach($data as $data)
                         <tr>
-                          <th scope="row">1</th>
+                        <th scope="row">{{ $loop->iteration }}</th>
                           <td>{{$data->subCategory_name}}</td>
                           <td>{{$data->subCategory_description}}</td>
                           <td>{{ $data->category->category_name }}</td>

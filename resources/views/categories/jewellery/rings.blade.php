@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
-<title>Anklets</title>
+<title>Rings</title>
 @include('../cssjss')
 </head>
 <div class="pageWrapper">
@@ -16,7 +16,6 @@
       		</div>
 		</div>
         <!--End Collection Banner-->
-        
         <div class="container-fluid">
         	<div class="row">
             	<!--Sidebar-->
@@ -167,23 +166,18 @@
                                                 	<i class="icon anm anm-search-plus-r"></i>
                                             	</a>
                                                 <!-- Start product button -->
-                                                <form action="#" method="post">
-                                                    <button class="btn btn--secondary cartIcon btn-addto-cart" type="button"><i class="icon anm anm-bag-l"></i></button>
+                                                <button class="add-to-cart" data-product-id="{{ $product->id }}"><i class="icon anm anm-bag-l"></i></button>
+                                                <form action="{{ route('wishlist.add', $product->id) }}" method="POST">
+                                                   @csrf
+                                                    <button type="submit" class="wishlist add-to-wishlist"><i class="icon anm anm-heart-l"></i></button>
                                                 </form>
-                                                <div class="wishlist-btn">
-                                                    <a class="wishlist add-to-wishlist" href="#" title="Add to Wishlist">
-                                                        <i class="icon anm anm-heart-l"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
                                             <!-- end product button -->
                                         </div>
                                         <!-- End product details -->
                                     </div>
                                 </div>
                                 @endforeach
-                              
-                            	
+                               
                         </div>
                     </div>
                 </div>

@@ -43,7 +43,7 @@
                     <ul class="customer-links list-inline">
                         <li><a href="{{route('admin.login')}}">Login</a></li>
                         <li><a href="{{route('admin.register')}}">Create Account</a></li>
-                        <li><a href="{{route('wishlist')}}">Wishlist</a></li>
+                        <li><a href="{{route('wishlist.index')}}">Wishlist</a></li>
                     </ul>
                 </div>
             </div>
@@ -69,16 +69,17 @@
                 <!--End Search Icon-->
                 <!--Desktop Logo-->
                 <div class="logo col-5 col-sm-6 col-md-6 col-lg-8 text-center">
-                    <a href="">
+                    <a href="{{route('home')}}">
                         <h3>Gems & Glow</h3>
                     </a>
                 </div>
                 <!--End Desktop Logo-->
                 <div class="col-4 col-sm-3 col-md-3 col-lg-2">
                 	<div class="site-cart">
-                    	<a href="{{route('cart')}}" title="Cart">
-                        	<i class="icon anm anm-bag-l"></i>
-                        </a>
+                  <a href="{{ route('cart.index') }}" title="Cart">
+                      <i class="icon anm anm-bag-l"></i>
+                      <span class="cart-count">{{ count(session('cart', [])) }}</span>
+                  </a>
                         <!--Minicart Popup-->
                         <!-- <div id="header-cart" class="block block-cart">
                         	<ul class="mini-products-list">

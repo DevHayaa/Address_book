@@ -45,44 +45,45 @@
                 	<h2>Drop Us A Line</h2>
                     <p>Lorem Ipsum é um texto modelo da indústria tipográfica e de impressão. O Lorem Ipsum tem vindo a ser o texto padrão usado por estas indústrias desde o ano de 1500 </p>
                 	<div class="formFeilds contact-form form-vertical">
-                      <form action="http://annimexweb.com/items/belle/assets/php/mail.php" method="post"  id="contact_form" class="contact-form">	
-                      <div class="row">
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                        	<div class="form-group">
-                          	<input type="text" id="ContactFormName" name="name" placeholder="Name" value="" required="">
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                        	<div class="form-group">
-							<input type="email" id="ContactFormEmail" name="email" placeholder="Email" value="" required="">                        	
-                            </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                          <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                          	<div class="form-group">
-                            <input required="" type="tel" id="ContactFormPhone" name="phone" pattern="[0-9\-]*" placeholder="Phone Number" value="">
-                            </div>
-                          </div>
-                          <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                          	<div class="form-group">
-                            <input required="" type="text" id="ContactSubject" name="subject" placeholder="Subject" value="">
-                            </div>
-                          </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                        	<div class="form-group">
-                            <textarea required="" rows="10" id="ContactFormMessage" name="message" placeholder="Your Message"></textarea>
-                            </div>
-                        </div>  
-                      </div>
-                      <div class="row">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                            <input type="submit" class="btn" value="Send Message">
-                        </div>
-                     </div>
-                     </form>
+                    <form action="{{ route('contact.send') }}" method="POST" id="contact_form" class="contact-form">
+        @csrf
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="form-group">
+                    <input type="text" id="ContactFormName" name="name" placeholder="Name" value="" required="">
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="form-group">
+                    <input type="email" id="ContactFormEmail" name="email" placeholder="Email" value="" required="">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="form-group">
+                    <input required="" type="tel" id="ContactFormPhone" name="phone" pattern="[0-9\-]*" placeholder="Phone Number" value="">
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="form-group">
+                    <input required="" type="text" id="ContactSubject" name="subject" placeholder="Subject" value="">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="form-group">
+                    <textarea required="" rows="10" id="ContactFormMessage" name="message" placeholder="Your Message"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <input type="submit" class="btn" value="Send Message">
+            </div>
+        </div>
+    </form>
                     </div>
                 </div>
                 <div class="col-12 col-sm-12 col-md-4 col-lg-4">
@@ -119,17 +120,6 @@
     <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
     <!--End Scoll Top-->
     
-     <!-- Including Jquery -->
-     <script src="assets/js/vendor/jquery-3.3.1.min.js"></script>
-     <script src="assets/js/vendor/jquery.cookie.js"></script>
-     <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
-     <script src="assets/js/vendor/wow.min.js"></script>
-     <!-- Including Javascript -->
-     <script src="assets/js/bootstrap.min.js"></script>
-     <script src="assets/js/plugins.js"></script>
-     <script src="assets/js/popper.min.js"></script>
-     <script src="assets/js/lazysizes.js"></script>
-     <script src="assets/js/main.js"></script>
 </div>
 </body>
 </html>

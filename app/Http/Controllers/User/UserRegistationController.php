@@ -1,13 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+
 use Hash;
 use App\Models\User;
+use App\Models\Admin;
 
-class RegisterController extends Controller
+class UserRegistationController extends Controller
 {
     public function create()
     {

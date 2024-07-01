@@ -128,7 +128,7 @@
                                     <i class="icon anm anm-search-plus-r"></i>
                                 </a>
                                 <div class="wishlist-btn">
-                                    <a class="wishlist add-to-wishlist" href="{{route('wishlist')}}">
+                                    <a class="wishlist add-to-wishlist" href="{{route('wishlist.index')}}">
                                         <i class="icon anm anm-heart-l"></i>
                                     </a>
                                 </div>
@@ -171,7 +171,7 @@
                             <!-- end product image -->
         
                             <!-- Start product button -->
-                            <form class="variants add" action="#" onclick="window.location.href='{{route('cart')}}'"method="post">
+                            <form class="variants add" action="#" onclick="window.location.href='{{route('cart.index')}}'"method="post">
                                 <button class="btn btn-addto-cart" type="button" tabindex="0">Select Options</button>
                             </form>
                             <div class="button-set">
@@ -179,7 +179,7 @@
                                     <i class="icon anm anm-search-plus-r"></i>
                                 </a>
                                 <div class="wishlist-btn">
-                                    <a class="wishlist add-to-wishlist" href="{{route('wishlist')}}">
+                                    <a class="wishlist add-to-wishlist" href="{{route('wishlist.index')}}">
                                         <i class="icon anm anm-heart-l"></i>
                                     </a>
                                 </div>
@@ -223,7 +223,7 @@
                             <!-- end product image -->
         
                             <!-- Start product button -->
-                            <form class="variants add" action="#" onclick="window.location.href='{{route('cart')}}'"method="post">
+                            <form class="variants add" action="#" onclick="window.location.href='{{route('cart.index')}}'"method="post">
                                 <button class="btn btn-addto-cart" type="button" tabindex="0">Add To Cart</button>
                             </form>
                             <div class="button-set">
@@ -231,7 +231,7 @@
                                     <i class="icon anm anm-search-plus-r"></i>
                                 </a>
                                 <div class="wishlist-btn">
-                                    <a class="wishlist add-to-wishlist" href="{{route('wishlist')}}">
+                                    <a class="wishlist add-to-wishlist" href="{{route('wishlist.index')}}">
                                         <i class="icon anm anm-heart-l"></i>
                                     </a>
                                 </div>
@@ -275,7 +275,7 @@
                             <!-- end product image -->
         
                             <!-- Start product button -->
-                            <form class="variants add" action="#" onclick="window.location.href='{{route('cart')}}'"method="post">
+                            <form class="variants add" action="#" onclick="window.location.href='{{route('cart.index')}}'"method="post">
                                 <button class="btn btn-addto-cart" type="button" tabindex="0">Add To Cart</button>
                             </form>
                             <div class="button-set">
@@ -283,7 +283,7 @@
                                     <i class="icon anm anm-search-plus-r"></i>
                                 </a>
                                 <div class="wishlist-btn">
-                                    <a class="wishlist add-to-wishlist" href="{{route('wishlist')}}">
+                                    <a class="wishlist add-to-wishlist" href="{{route('wishlist.index')}}">
                                         <i class="icon anm anm-heart-l"></i>
                                     </a>
                                 </div>
@@ -328,7 +328,7 @@
                             <!-- end product image -->
         
                             <!-- Start product button -->
-                            <form class="variants add" action="#" onclick="window.location.href='{{route('cart')}}'"method="post">
+                            <form class="variants add" action="#" onclick="window.location.href='{{route('cart.index')}}'"method="post">
                                 <button class="btn btn-addto-cart" type="button" tabindex="0">Select Options</button>
                             </form>
                             <div class="button-set">
@@ -336,7 +336,7 @@
                                     <i class="icon anm anm-search-plus-r"></i>
                                 </a>
                                 <div class="wishlist-btn">
-                                    <a class="wishlist add-to-wishlist" href="{{route('wishlist')}}">
+                                    <a class="wishlist add-to-wishlist" href="{{route('wishlist.index')}}">
                                         <i class="icon anm anm-heart-l"></i>
                                     </a>
                                 </div>
@@ -380,7 +380,7 @@
                             <!-- end product image -->
         
                             <!-- Start product button -->
-                            <form class="variants add" action="#" onclick="window.location.href='{{route('cart')}}'"method="post">
+                            <form class="variants add" action="#" onclick="window.location.href='{{route('cart.index')}}'"method="post">
                                 <button class="btn btn-addto-cart" type="button" tabindex="0">Select Options</button>
                             </form>
                             <div class="button-set">
@@ -388,7 +388,7 @@
                                     <i class="icon anm anm-search-plus-r"></i>
                                 </a>
                                 <div class="wishlist-btn">
-                                    <a class="wishlist add-to-wishlist" href="{{route('wishlist')}}">
+                                    <a class="wishlist add-to-wishlist" href="{{route('wishlist.index')}}">
                                         <i class="icon anm anm-heart-l"></i>
                                     </a>
                                 </div>

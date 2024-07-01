@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Hash;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Admin;
 use App\Models\User;
+use Hash;
 
-class LoginController extends Controller
+class UserLoginController extends Controller
 {
     public function index()
     {

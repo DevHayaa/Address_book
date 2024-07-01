@@ -1,5 +1,8 @@
 <?php
-
+return [
+    // other mail settings
+    'admin_email' => env('MAIL_ADMIN_EMAIL', 'admin@example.com'),
+];
 return [
 
     /*
