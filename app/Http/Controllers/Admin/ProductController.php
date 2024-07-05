@@ -116,4 +116,24 @@ class ProductController extends Controller
 
         return redirect()->route('products')->with('success', 'Product deleted successfully.');
     }
+    public function search(Request $request)
+    {
+        $searchQuery = $request->input('search');
+
+        // Perform a search query on your products table
+        $products = Product::where('product_name', 'like', "%$searchQuery%")
+                           ->orWhere('product_description', 'like', "%$searchQuery%")
+                           ->get();
+
+        // Pass the products to the searchResults view
+        return view('product.searchResult', compact('products'));
+    }
+
+    // Other methods remain unchanged...
+
+public function show($id)
+{
+    $product = Product::findOrFail($id);
+    return view('product.show', compact('product'));
+}
 }

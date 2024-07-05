@@ -509,19 +509,7 @@
         </div>
         <!--End Hero Banner With Text-->
         
-        <!-- Instagram Section-->
-        <div class="section instagram-feed-section">
-        	<div class="container">
-                <div class="section-header text-center">
-                    <h2 class="h2 heading-font">Belle On Instagram</h2>
-                    <p>Phasellus lorem malesuada ligula pulvinar commodo maecenas suscipit auctom.</p>
-                </div>
-                <!--Instagram ID-->
-                <div id="instafeed" class="imlow_resolution"></div>
-                <!--End Instagram ID-->
-            </div>
-        </div>
-        <!--End Instagram Section-->
+
         
     </div>
     <!--End Body Content-->

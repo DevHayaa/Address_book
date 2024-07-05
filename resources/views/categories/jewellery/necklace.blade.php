@@ -202,7 +202,7 @@
     <!--Scroll Top-->
     <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
     <!--End Scroll Top-->
-    <script>
+ <script>
     $(document).ready(function () {
         $('.add-to-cart').click(function () {
             var productId = $(this).data('product-id');

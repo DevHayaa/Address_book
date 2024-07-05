@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\AdminDashBoardController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\AdminWishlistController;
 use App\Http\Controllers\Admin\AdminContactController;
+use App\Http\Controllers\Admin\AdminOrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\CosmeticsController;
@@ -87,6 +88,15 @@ Route::post('/contact', [ContactController::class, 'send'])->name('contact.send'
 
 //admin Contact
 Route::get('/contacts', [AdminContactController::class, 'index'])->name('contacts.index');
+
+Route::get('/admin/orders', [AdminOrderController::class, 'showOrders'])->name('admin.orders');
+Route::get('/admin/order-items', [AdminOrderController::class, 'index'])->name('admin.order-items');
+
+Route::get('/admin/cart', [AdminOrderController::class,'showCart'])->name('admin.cart');
+
+Route::get('/products/search', [ProductController::class,'search'])->name('product.search');
+Route::get('/products/{product}', [ProductController::class, 'show'])->name('product.show');
+
 
 // Admin Authentication Routes
 Route::get('/admin/login', [AdminLoginController::class, 'index'])->name('admin.login')->middleware('clear_cookies');;
