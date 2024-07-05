@@ -1,109 +1,164 @@
 <?php
-
-// app/Http/Controllers/CartController.php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Cart;
 use App\Models\Product;
+use App\Models\Order;
+use App\Models\OrderItem;
 
 class CartController extends Controller
 {
-    public function add(Request $request, $productId)
+    public function addToCart(Request $request)
     {
-        $product = Product::find($productId);
+        $request->validate([
+            'product_id' => 'required|integer|exists:products,id',
+            'quantity' => 'required|integer|min:1'
+        ]);
+
+        $product_id = $request->input('product_id');
+        $quantity = $request->input('quantity', 1);
+        $user_id = Auth::id();
+
+        $product = Product::find($product_id);
 
         if (!$product) {
-            return redirect()->back()->with('error', 'Product not found.');
+            return response()->json(['message' => 'Product not found.'], 404);
         }
 
-        $cart = session()->get('cart', []);
+        if ($product->quantity < $quantity) {
+            return response()->json(['message' => 'Not enough product in stock.'], 400);
+        }
 
-        if (isset($cart[$productId])) {
-            $cart[$productId]['quantity']++;
+        $cart = Cart::where('user_id', $user_id)->where('product_id', $product_id)->first();
+
+        if ($cart) {
+            $cart->quantity += $quantity;
         } else {
-            $cart[$productId] = [
-                "name" => $product->product_name,
-                "quantity" => 1,
-                "price" => $product->price,
-                "image" => $product->image
-            ];
+            $cart = new Cart();
+            $cart->product_id = $product_id;
+            $cart->user_id = $user_id;
+            $cart->quantity = $quantity;
         }
 
-        session()->put('cart', $cart);
-        toastr()->timeOut(1000)->closeButton()->success('Product added to cart successfully!');
-        return redirect()->back();
+        $cart->save();
+
+        // Update the product quantity in the database
+        $product->quantity -= $quantity;
+        $product->save();
+
+        $cartCount = Cart::where('user_id', $user_id)->count();
+
+        return response()->json(['message' => 'Product added to cart successfully!', 'cart_count' => $cartCount]);
     }
 
-    public function index()
+    public function updateCart(Request $request, $id)
     {
-        $cart = session()->get('cart', []);
-        return view('cart.index', compact('cart'));
+        $request->validate([
+            'quantity' => 'required|integer|min:1'
+        ]);
+
+        $quantity = $request->input('quantity');
+        $user_id = Auth::id();
+
+        $cart = Cart::where('user_id', $user_id)->where('product_id', $id)->first();
+
+        if (!$cart) {
+            return response()->json(['message' => 'Cart item not found.'], 404);
+        }
+
+        $product = Product::find($id);
+
+        if ($product->quantity < $quantity) {
+            return response()->json(['message' => 'Not enough product in stock.'], 400);
+        }
+
+        $product->quantity += $cart->quantity;
+        $cart->quantity = $quantity;
+        $product->quantity -= $quantity;
+
+        $product->save();
+        $cart->save();
+
+        return response()->json(['message' => 'Cart updated successfully!']);
     }
 
-    public function update(Request $request, $productId)
+    public function removeFromCart($id)
     {
-        if ($request->quantity <= 0) {
-            return $this->remove($productId);
+        $user_id = Auth::id();
+
+        $cart = Cart::where('user_id', $user_id)->where('product_id', $id)->first();
+
+        if (!$cart) {
+            return response()->json(['message' => 'Cart item not found.'], 404);
         }
 
-        $cart = session()->get('cart', []);
-        if (isset($cart[$productId])) {
-            $cart[$productId]['quantity'] = $request->quantity;
-            session()->put('cart', $cart);
-        }
-        toastr()->timeOut(1000)->closeButton()->success('Cart updated successfully!');
-        return redirect()->route('cart.index');
+        $product = Product::find($id);
+        $product->quantity += $cart->quantity;
+        $product->save();
+
+        $cart->delete();
+
+        return response()->json(['message' => 'Product removed from cart successfully!']);
     }
-
-    public function remove($productId)
+    public function cartCount()
     {
-        $cart = session()->get('cart', []);
-        if (isset($cart[$productId])) {
-            unset($cart[$productId]);
-            session()->put('cart', $cart);
+        $cartCount = Cart::where('user_id', auth()->id())->count();
+        return response()->json(['count' => $cartCount]);
+    }
+    public function viewCart()
+    {
+        $user_id = Auth::id();
+        $cartItems = Cart::where('user_id', $user_id)->with('product')->get();
+        $cartCount = Cart::where('user_id', $user_id)->count();
+        return view('cart.index', compact('cartItems', 'cartCount'));
+    }
+    
+    public function checkout()
+    {
+        $user_id = Auth::id();
+        $cartItems = Cart::where('user_id', $user_id)->with('product')->get();
+        $cartCount = Cart::where('user_id', $user_id)->count();
+        return view('checkout.index', compact('cartItems', 'cartCount'));
+    }
+    public function placeOrder(Request $request)
+    {
+        $user_id = Auth::id();
+    
+        $request->validate([
+            'shipping_address' => 'required|string',
+            'payment_method' => 'required|string'
+        ]);
+    
+        $cartItems = Cart::where('user_id', $user_id)->with('product')->get();
+    
+        if ($cartItems->isEmpty()) {
+            return redirect()->route('cart.view')->with('error', 'Your cart is empty.');
         }
-        toastr()->timeOut(1000)->closeButton()->success('Product removed from cart successfully!');
-        return redirect()->route('cart.index');
+    
+        $total_price = $cartItems->sum(function($cartItem) {
+            return $cartItem->product->price * $cartItem->quantity;
+        });
+    
+        $order = new Order();
+        $order->user_id = $user_id;
+        $order->total_price = $total_price;
+        $order->payment_method = $request->payment_method;
+        $order->shipping_address = $request->shipping_address;
+        $order->save();
+    
+        foreach ($cartItems as $item) {
+            $orderItem = new OrderItem();
+            $orderItem->order_id = $order->id;
+            $orderItem->product_id = $item->product_id;
+            $orderItem->quantity = $item->quantity;
+            $orderItem->price = $item->product->price;
+            $orderItem->save();
+        }
+    
+        Cart::where('user_id', $user_id)->delete();
+    
+        return redirect()->route('thankyou')->with('success', 'Order placed successfully.');
     }
-    public function count()
-{
-    $count = Cart::where('user_id', auth()->id())->count();
-    return response()->json(['count' => $count]);
-}
-public function addToCart(Request $request)
-{
-    $productId = $request->input('product_id');
-    $quantity = $request->input('quantity', 1); // Default quantity is 1
-
-    // Example product data, replace with actual product retrieval
-    $product = [
-        'id' => $productId,
-        'name' => 'Sample Product',
-        'price' => 100,
-        'quantity' => $quantity,
-    ];
-
-    // Get cart from session, or initialize it if not present
-    $cart = session()->get('cart', []);
-
-    // Check if product already in cart
-    if (isset($cart[$productId])) {
-        $cart[$productId]['quantity'] += $quantity;
-    } else {
-        $cart[$productId] = $product;
-    }
-
-    // Update session with new cart
-    session()->put('cart', $cart);
-
-    // Return response
-    return response()->json([
-        'status' => 'success',
-        'message' => 'Product added to cart',
-        'cartCount' => count($cart)
-    ]);
-}
-
-
-}
+}    

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
-    <title>Ear Rings</title>
+    <title>Necklace</title>
     @include('../cssjss')
     <style>
         .grid-view-item {
@@ -24,7 +24,7 @@
         <div class="collection-header">
             <div class="collection-hero">
                 <div class="collection-hero__image"><img class="blur-up lazyload" src="{{asset('assets/images/cat-women2.jpg')}}" alt="Women" title="Women" /></div>
-                <div class="collection-hero__title-wrapper"><h1 class="collection-hero__title page-width">Ear Rings</h1></div>
+                <div class="collection-hero__title-wrapper"><h1 class="collection-hero__title page-width">Necklace</h1></div>
             </div>
         </div>
         <!--End Collection Banner-->
@@ -202,7 +202,43 @@
     <!--Scroll Top-->
     <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
     <!--End Scroll Top-->
+    <script>
+    $(document).ready(function () {
+        $('.add-to-cart').click(function () {
+            var productId = $(this).data('product-id');
 
+            $.ajax({
+                url: '{{ route('cart.add') }}',
+                method: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    product_id: productId,
+                    quantity: 1 // Assuming default quantity is 1
+                },
+                success: function (response) {
+                    alert(response.message);
+                    updateCartCount(response.cart_count);
+                    updateQuantityInCart(productId, 1); // Update quantity in cart section
+                },
+                error: function (xhr) {
+                    alert(xhr.responseJSON.message);
+                }
+            });
+        });
+
+        function updateQuantityInCart(productId, quantity) {
+            // Example: Update quantity in cart section after adding to cart
+            var cartItemRow = $('#cart-item-' + productId);
+            if (cartItemRow.length > 0) {
+                var quantityField = cartItemRow.find('.quantity');
+                quantityField.val(quantity); // Update quantity field in cart section
+            } else {
+                // Handle case where product is not initially in cart section
+                // You may optionally reload or refresh the cart section here
+            }
+        }
+    });
+</script>
 </div>
 </body>
 </html>

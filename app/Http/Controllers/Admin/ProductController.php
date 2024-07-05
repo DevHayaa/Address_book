@@ -19,7 +19,7 @@ class ProductController extends Controller
                   ->orWhere('product_description', 'LIKE', "%{$search}%");
         }
 
-        $products = $query->paginate(3); // Adjust to 3 products per page
+        $products = $query->get(); 
         return view('admin.product.product', compact('products'));
     }
 
@@ -116,6 +116,4 @@ class ProductController extends Controller
 
         return redirect()->route('products')->with('success', 'Product deleted successfully.');
     }
-
-    
 }

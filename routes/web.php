@@ -15,8 +15,10 @@ use App\Http\Controllers\Admin\AdminWishlistController;
 use App\Http\Controllers\Admin\AdminContactController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SubCategoryController;
+use App\Http\Controllers\CosmeticsController;
 use App\Http\Controllers\JewelleryController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Middleware\ClearCookies;
 
@@ -63,18 +65,21 @@ Route::prefix('admin')->name('admin.')->group(function() {
 Route::middleware(['auth'])->group(function () {
     Route::post('/wishlist/add/{product}', [WishlistController::class, 'add'])->name('wishlist.add');
     Route::post('/wishlist/remove/{product}', [WishlistController::class, 'remove'])->name('wishlist.remove');
-    Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
-    Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
-});
+    Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');});
 
 // addtocart 
-Route::middleware(['auth'])->group(function () {
-    Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
-    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-    Route::post('/cart/update/{product}', [CartController::class, 'update'])->name('cart.update');
-    Route::post('/cart/remove/{product}', [CartController::class, 'remove'])->name('cart.remove');
-});
-Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('add.to.cart');
+Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+Route::post('/cart/update/{id}', [CartController::class, 'updateCart'])->name('cart.update');
+Route::post('/cart/remove/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');
+Route::get('/cart/count', [CartController::class, 'cartCount'])->name('cart.count');
+Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.view');
+
+// checkout
+Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
+Route::post('/checkout/place-order', [CartController::class, 'placeOrder'])->name('checkout.place.order');
+Route::get('/thankyou', function () {
+    return view('thankyou');
+})->name('thankyou');
 
 //contact
 Route::get('/contact', [ContactController::class, 'showForm'])->name('contact.show');
@@ -94,6 +99,24 @@ Route::middleware(['auth', 'admin'])->group(function () {
      
 });
 Route::post('logout', [LoginController::class, 'logout'])->middleware('clear.session.cookies')->name('logout');
+
+
+
+Route::get('/cosmetics/nail-paints', [CosmeticsController::class, 'nailPaints'])->name('nailPaints');
+Route::get('/cosmetics/nail-paint-remover', [CosmeticsController::class, 'nailPaintRemover'])->name('nailPaintRemover');
+Route::get('/cosmetics/lip-tint', [CosmeticsController::class, 'lipTint'])->name('lipTint');
+Route::get('/cosmetics/lip-gloss', [CosmeticsController::class, 'lipGloss'])->name('lipGloss');
+Route::get('/cosmetics/lipstick', [CosmeticsController::class, 'lipstick'])->name('lipstick');
+Route::get('/cosmetics/lip-liner', [CosmeticsController::class, 'lipLiner'])->name('lipLiner');
+Route::get('/cosmetics/mascara', [CosmeticsController::class, 'mascara'])->name('mascara');
+Route::get('/cosmetics/kajal', [CosmeticsController::class, 'kajal'])->name('kajal');
+Route::get('/cosmetics/eye-shadow', [CosmeticsController::class, 'eyeShadow'])->name('eyeShadow');
+Route::get('/cosmetics/eye-liner', [CosmeticsController::class, 'eyeLiner'])->name('eyeLiner');
+Route::get('/cosmetics/foundation', [CosmeticsController::class, 'foundation'])->name('foundation');
+Route::get('/cosmetics/face-powder', [CosmeticsController::class, 'facePowder'])->name('facePowder');
+Route::get('/cosmetics/blush-on', [CosmeticsController::class, 'blushOn'])->name('blushOn');
+
+
 
 
 // User Authentication Routes

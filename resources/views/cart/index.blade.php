@@ -1,76 +1,111 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html lang="en">
 <head>
-    <title>Cart</title>
-    @include('cssjss')
+    <meta charset="UTF-8">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
-<body class="page-template belle">
+    @include('../cssjss')
+</head>
 <div class="pageWrapper">
-    @include('navigation.header')
+    @include('../navigation.header')
     <!--Body Content-->
+    @php
+    $cartCount = count($cartItems); // Assuming $cartItems is passed from controller
+@endphp
     <div id="page-content">
-        <!--Page Title-->
-        <div class="page section-header text-center">
-            <div class="page-title">
-                <div class="wrapper"><h1 class="page-width">Shopping Cart</h1></div>
+              <!--Collection Banner-->
+              <div class="collection-header">
+            <div class="collection-hero">
+                <div class="collection-hero__image"><img class="blur-up lazyload" src="{{asset('assets/images/cat-women2.jpg')}}" alt="Women" title="Women" /></div>
+                <div class="collection-hero__title-wrapper"><h1 class="collection-hero__title page-width">Shopping Cart</h1></div>
             </div>
         </div>
-        <!--End Page Title-->
-        
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
-                    <div class="cart-table table-content table-responsive">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th class="product-name text-center alt-font">Remove</th>
-                                    <th class="product-price text-center alt-font">Images</th>
-                                    <th class="product-name alt-font">Product</th>
-                                    <th class="product-price text-center alt-font">Unit Price</th>
-                                    <th class="product-quantity text-center alt-font">Quantity</th>
-                                    <th class="product-subtotal text-center alt-font">Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($cart as $productId => $item)
-                                    <tr>
-                                        <td class="product-remove text-center" valign="middle">
-                                            <form action="{{ route('cart.remove', $productId) }}" method="POST">
-                                                @csrf
-                                                <button type="submit" class="btn btn-danger"><i class="icon icon anm anm-times-l"></i></button>
-                                            </form>
-                                        </td>
-                                        <td class="product-thumbnail text-center">
-                                            <a href="#"><img src="" alt="" title="" /></a>
-                                        </td>
-                                        <td class="product-name"><h4 class="no-margin"><a href="#">{{ $item['name'] }}</a></h4></td>
-                                        <td class="product-price text-center"><span class="amount">${{ $item['price'] }}</span></td>
-                                        <td class="product-quantity text-center">
-                                            <form action="{{ route('cart.update', $productId) }}" method="POST">
-                                                @csrf
-                                                <input type="number" name="quantity" value="{{ $item['quantity'] }}" min="1" class="form-control">
-                                                <button type="submit" class="btn btn-small mt-2">Update</button>
-                                            </form>
-                                        </td>
-                                        <td class="product-subtotal text-center"><span class="amount">${{ $item['price'] * $item['quantity'] }}</span></td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>                   
-                </div>
-            </div>
-        </div>
-        
+        <!--End Collection Banner-->
+<div class="container mt-5">
+    <h2>Your Cart</h2>
+    <div id="cart-items">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Image</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($cartItems as $cartItem)
+                <tr id="cart-row-{{ $cartItem->product_id }}">
+                    <td>
+                        <img src="{{ asset('storage/images/' . $cartItem->product->image) }}" alt="{{ $cartItem->product->name }}" style="max-width: 100px;">
+                    </td>
+                    <td>{{ $cartItem->product->product_name }}</td>
+                    <td>${{ $cartItem->product->price }}</td>
+                    <td>
+                        <input type="number" class="form-control quantity" value="{{ $cartItem->quantity }}" data-product-id="{{ $cartItem->product_id }}">
+                    </td>
+                    <td>${{ $cartItem->product->price * $cartItem->quantity }}</td>
+                    <td>
+                        <button class="btn btn-sm btn-primary update-cart" data-product-id="{{ $cartItem->product_id }}">Update</button>
+                        <button class="btn btn-sm btn-danger remove-from-cart" data-product-id="{{ $cartItem->product_id }}">Remove</button>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
     </div>
-    <!--End Body Content-->
-    
-    @include('navigation.footer')
-    <!--End Footer-->
-    <!--Scroll Top-->
-    <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
-    <!--End Scroll Top-->
+    <a href="{{ route('checkout') }}" class="btn btn-primary">Check Out</a>
 </div>
+
+<script>
+    $(document).ready(function () {
+        // Update cart item quantity
+        $('.update-cart').click(function () {
+            var productId = $(this).data('product-id');
+            var quantity = $('#cart-row-' + productId + ' .quantity').val();
+
+            $.ajax({
+                url: '/cart/update/' + productId,
+                method: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    quantity: quantity
+                },
+                success: function (response) {
+                    alert(response.message);
+                    location.reload();
+                },
+                error: function (xhr) {
+                    alert(xhr.responseJSON.message);
+                }
+            });
+        });
+
+        // Remove cart item
+        $('.remove-from-cart').click(function () {
+            var productId = $(this).data('product-id');
+
+            $.ajax({
+                url: '/cart/remove/' + productId,
+                method: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function (response) {
+                    alert(response.message);
+                    $('#cart-row-' + productId).remove();
+                },
+                error: function (xhr) {
+                    alert(xhr.responseJSON.message);
+                }
+            });
+        });
+    });
+</script>
+
 </body>
 </html>

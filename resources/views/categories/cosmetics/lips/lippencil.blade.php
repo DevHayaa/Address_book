@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
-    <title>Ear Rings</title>
+    <title>Lip Pencil</title>
     @include('../cssjss')
     <style>
         .grid-view-item {
@@ -24,7 +24,7 @@
         <div class="collection-header">
             <div class="collection-hero">
                 <div class="collection-hero__image"><img class="blur-up lazyload" src="{{asset('assets/images/cat-women2.jpg')}}" alt="Women" title="Women" /></div>
-                <div class="collection-hero__title-wrapper"><h1 class="collection-hero__title page-width">Ear Rings</h1></div>
+                <div class="collection-hero__title-wrapper"><h1 class="collection-hero__title page-width">Lip pencil</h1></div>
             </div>
         </div>
         <!--End Collection Banner-->

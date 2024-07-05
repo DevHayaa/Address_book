@@ -171,7 +171,7 @@
                             <!-- end product image -->
         
                             <!-- Start product button -->
-                            <form class="variants add" action="#" onclick="window.location.href='{{route('cart.index')}}'"method="post">
+                            <form class="variants add" action="#" onclick="window.location.href='{{route('cart.view')}}'"method="post">
                                 <button class="btn btn-addto-cart" type="button" tabindex="0">Select Options</button>
                             </form>
                             <div class="button-set">
@@ -223,7 +223,7 @@
                             <!-- end product image -->
         
                             <!-- Start product button -->
-                            <form class="variants add" action="#" onclick="window.location.href='{{route('cart.index')}}'"method="post">
+                            <form class="variants add" action="#" onclick="window.location.href='{{route('cart.view')}}'"method="post">
                                 <button class="btn btn-addto-cart" type="button" tabindex="0">Add To Cart</button>
                             </form>
                             <div class="button-set">
@@ -275,7 +275,7 @@
                             <!-- end product image -->
         
                             <!-- Start product button -->
-                            <form class="variants add" action="#" onclick="window.location.href='{{route('cart.index')}}'"method="post">
+                            <form class="variants add" action="#" onclick="window.location.href='{{route('cart.view')}}'"method="post">
                                 <button class="btn btn-addto-cart" type="button" tabindex="0">Add To Cart</button>
                             </form>
                             <div class="button-set">
@@ -328,7 +328,7 @@
                             <!-- end product image -->
         
                             <!-- Start product button -->
-                            <form class="variants add" action="#" onclick="window.location.href='{{route('cart.index')}}'"method="post">
+                            <form class="variants add" action="#" onclick="window.location.href='{{route('cart.view')}}'"method="post">
                                 <button class="btn btn-addto-cart" type="button" tabindex="0">Select Options</button>
                             </form>
                             <div class="button-set">
@@ -380,7 +380,7 @@
                             <!-- end product image -->
         
                             <!-- Start product button -->
-                            <form class="variants add" action="#" onclick="window.location.href='{{route('cart.index')}}'"method="post">
+                            <form class="variants add" action="#" onclick="window.location.href='{{route('cart.view')}}'"method="post">
                                 <button class="btn btn-addto-cart" type="button" tabindex="0">Select Options</button>
                             </form>
                             <div class="button-set">
@@ -748,3 +748,5 @@
 
 <!-- belle/home8-jewellery.html   11 Nov 2019 12:31:16 GMT -->
 </html>
+
+

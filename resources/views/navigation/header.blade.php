@@ -14,29 +14,10 @@
         <div class="container-fluid">
             <div class="row">
             	<div class="col-10 col-sm-8 col-md-5 col-lg-4">
-                    <div class="currency-picker">
-                        <span class="selected-currency">USD</span>
-                        <ul id="currencies">
-                            <li data-currency="INR" class="">INR</li>
-                            <li data-currency="GBP" class="">GBP</li>
-                            <li data-currency="CAD" class="">CAD</li>
-                            <li data-currency="USD" class="selected">USD</li>
-                            <li data-currency="AUD" class="">AUD</li>
-                            <li data-currency="EUR" class="">EUR</li>
-                            <li data-currency="JPY" class="">JPY</li>
-                        </ul>
-                    </div>
-                    <div class="language-dropdown">
-                        <span class="language-dd">English</span>
-                        <ul id="language">
-                            <li class="">German</li>
-                            <li class="">French</li>
-                        </ul>
-                    </div>
                     <p class="phone-no"><i class="anm anm-phone-s"></i> +440 0(111) 044 833</p>
                 </div>
                 <div class="col-sm-4 col-md-4 col-lg-4 d-none d-lg-none d-md-block d-lg-block">
-                	<div class="text-center"><p class="top-header_middle-text"> Worldwide Express Shipping</p></div>
+                	<div class="text-center"><p class="top-header_middle-text"></p></div>
                 </div>
                 <div class="col-2 col-sm-4 col-md-3 col-lg-4 text-right">
                 	<span class="user-menu d-block d-lg-none"><i class="anm anm-user-al" aria-hidden="true"></i></span>
@@ -76,9 +57,9 @@
                 <!--End Desktop Logo-->
                 <div class="col-4 col-sm-3 col-md-3 col-lg-2">
                 	<div class="site-cart">
-                  <a href="{{ route('cart.index') }}" title="Cart">
+                  <a href="{{route('cart.view')}}" title="Cart">
                       <i class="icon anm anm-bag-l"></i>
-                      <span class="cart-count">{{ count(session('cart', [])) }}</span>
+                      <span id="cart-count">{{ session('cart_count') }}</span>
                   </a>
                         <!--Minicart Popup-->
                         <!-- <div id="header-cart" class="block block-cart">
@@ -169,40 +150,32 @@
         </li>
         <li class="lvl1 parent dropdown"><a href="#">Complexion <i class="anm anm-angle-down-l"></i></a>
           <ul class="dropdown">
-            <li><a href="" class="site-nav">Blushon</a></li>
-            <li><a href="" class="site-nav">Fixer</a></li>
-            <li><a href="" class="site-nav">Concealer</a></li>
-            <li><a href="" class="site-nav">Foundation</a></li>
-            <li><a href="" class="site-nav">Highlighter</a></li>
-            <li><a href="" class="site-nav">Creams</a></li>
-            <li><a href="" class="site-nav">contour</a></li>
-            <li><a href="" class="site-nav">Face powder</a></li>
-            <li><a href="" class="site-nav">Primer</a></li>
+            <li><a href="{{route('blushOn')}}" class="site-nav">Blushon</a></li>
+            <li><a href="{{route('foundation')}}" class="site-nav">Foundation</a></li>
+            <li><a href="{{route('facePowder')}}" class="site-nav">Face powder</a></li>
 
           </ul>
         </li>
         <li class="lvl1 parent dropdown"><a href="#">Lips <i class="anm anm-angle-down-l"></i></a>
           <ul class="dropdown">
-            <li><a href="" class="site-nav">Lip tint</a></li>
-            <li><a href="" class="site-nav">Lip gloss</a></li>
-            <li><a href="" class="site-nav">Lipstick</a></li>
-            <li><a href="" class="site-nav">Lip balm</a></li>
-            <li><a href="" class="site-nav">Lip pencil</a></li>
+            <li><a href="{{route('lipTint')}}" class="site-nav">Lip tint</a></li>
+            <li><a href="{{route('lipGloss')}}" class="site-nav">Lip gloss</a></li>
+            <li><a href="{{route('lipstick')}}" class="site-nav">Lipstick</a></li>
+            <li><a href="{{route('lipLiner')}}" class="site-nav">Lip pencil</a></li>
           </ul>
         </li>
         <li class="lvl1 parent dropdown"><a href="#">Nails <i class="anm anm-angle-down-l"></i></a>
           <ul class="dropdown">
-            <li><a href="" class="site-nav">Nail paint</a></li>
-            <li><a href="" class="site-nav">Nail polish remover</a></li>
+            <li><a href="{{route('nailPaints')}}" class="site-nav">Nail paint</a></li>
+            <li><a href="{{route('nailPaintRemover')}}" class="site-nav">Nail polish remover</a></li>
           </ul>
         </li>
         <li class="lvl1 parent dropdown"><a href="#">Eyes <i class="anm anm-angle-down-l"></i></a>
           <ul class="dropdown">
-            <li><a href="" class="site-nav">Eye shadow</a></li>
-            <li><a href="" class="site-nav">Eye liner</a></li>
-            <li><a href="" class="site-nav">Mascara</a></li>
-            <li><a href="" class="site-nav">Kajal</a></li>
-            <li><a href="" class="site-nav">Eyebrow pencil</a></li>
+            <li><a href="{{route('eyeShadow')}}" class="site-nav">Eye shadow</a></li>
+            <li><a href="{{route('eyeLiner')}}" class="site-nav">Eye liner</a></li>
+            <li><a href="{{route('mascara')}}" class="site-nav">Mascara</a></li>
+            <li><a href="{{route('kajal')}}" class="site-nav">Kajal</a></li>
           </ul>
         </li>
         <li class="lvl1"><a href="#"><b>Buy Now!</b> <i class="anm anm-angle-down-l"></i></a></li>
@@ -268,3 +241,20 @@
       </ul>
 	</div>
 	<!--End Mobile Menu-->
+  <script>
+
+$(document).ready(function() {
+    updateCartCount(); // Update count on page load
+
+    function updateCartCount() {
+        $.ajax({
+            url: "{{ route('cart.count') }}",
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                $('#cart-count').text(response.count);
+            }
+        });
+    }
+});
+</script>

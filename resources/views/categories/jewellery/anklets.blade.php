@@ -1,36 +1,48 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
-<title>Anklets</title>
-@include('../cssjss')
+    <title>Anklets</title>
+    @include('../cssjss')
+    <style>
+        .grid-view-item {
+            padding: 15px;
+        }
+        .grid-view-item img {
+            width: 100%;
+            height: auto;
+        }
+        .product-details {
+            padding: 10px;
+        }
+    </style>
 </head>
 <div class="pageWrapper">
-	@include('../navigation.header')
-   <!--Body Content-->
-   <div id="page-content">
-    	<!--Collection Banner-->
-    	<div class="collection-header">
-			<div class="collection-hero">
-        		<div class="collection-hero__image"><img class="blur-up lazyload" src="{{asset('assets/images/cat-women2.jpg')}}" alt="Women" title="Women" /></div>
-        		<div class="collection-hero__title-wrapper"><h1 class="collection-hero__title page-width">Anklets</h1></div>
-      		</div>
-		</div>
+    @include('../navigation.header')
+    <!--Body Content-->
+    <div id="page-content">
+              <!--Collection Banner-->
+              <div class="collection-header">
+            <div class="collection-hero">
+                <div class="collection-hero__image"><img class="blur-up lazyload" src="{{asset('assets/images/cat-women2.jpg')}}" alt="Women" title="Women" /></div>
+                <div class="collection-hero__title-wrapper"><h1 class="collection-hero__title page-width">ANklets</h1></div>
+            </div>
+        </div>
         <!--End Collection Banner-->
         
         <div class="container-fluid">
-        	<div class="row">
-            	<!--Sidebar-->
-            	<div class="col-12 col-sm-12 col-md-3 col-lg-2 sidebar filterbar mt-3">
-                	<div class="closeFilter d-block d-md-none d-lg-none"><i class="icon icon anm anm-times-l"></i></div>
-                	<div class="sidebar_tags">
+            <div class="row">
+                <!--Sidebar-->
+                <div class="col-12 col-sm-12 col-md-3 col-lg-2 sidebar filterbar mt-3">
+                    <div class="closeFilter d-block d-md-none d-lg-none"><i class="icon icon anm anm-times-l"></i></div>
+                    <div class="sidebar_tags">
                         <!--Price Filter-->
                         <div class="sidebar_widget filterBox filter-widget">
                             <div class="widget-title">
-                            	<h2>Price</h2>
+                                <h2>Price</h2>
                             </div>
                             <form action="#" method="post" class="price-filter">
                                 <div id="slider-range" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
-                                	<div class="ui-slider-range ui-widget-header ui-corner-all"></div>
+                                    <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
                                     <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
                                     <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
                                 </div>
@@ -49,7 +61,7 @@
                         <div class="sidebar_widget filterBox filter-widget size-swacthes">
                             <div class="widget-title"><h2>Size</h2></div>
                             <div class="filter-color swacth-list">
-                            	<ul>
+                                <ul>
                                     <li><span class="swacth-btn checked">X</span></li>
                                     <li><span class="swacth-btn">XL</span></li>
                                     <li><span class="swacth-btn">XLL</span></li>
@@ -88,26 +100,24 @@
                         <!--End Color Swatches-->
                         <!--Banner-->
                         <div class="sidebar_widget static-banner">
-                        	<img src="assets/images/side-banner-2.jpg" alt="" />
+                            <img src="assets/images/side-banner-2.jpg" alt="" />
                         </div>
                         <!--Banner-->
- 
-                       
                     </div>
                 </div>
                 <!--End Sidebar-->
                 <!--Main Content-->
                 <div class="col-12 col-sm-12 col-md-9 col-lg-10 main-col">
-                	<div class="productList">
-                    	<!--Toolbar-->
+                    <div class="productList">
+                        <!--Toolbar-->
                         <button type="button" class="btn btn-filter d-block d-md-none d-lg-none"> Product Filters</button>
-                    	<div class="toolbar">
-                        	<div class="filters-toolbar-wrapper">
-                            	<div class="row">
+                        <div class="toolbar">
+                            <div class="filters-toolbar-wrapper">
+                                <div class="row">
                                     <div class="col-4 col-md-4 col-lg-4 text-right m-3">
-                                    	<div class="filters-toolbar__item">
-                                      		<label for="SortBy" class="hidden">Sort</label>
-                                      		<select name="SortBy" id="SortBy" class="filters-toolbar__input filters-toolbar__input--sort">
+                                        <div class="filters-toolbar__item">
+                                            <label for="SortBy" class="hidden">Sort</label>
+                                            <select name="SortBy" id="SortBy" class="filters-toolbar__input filters-toolbar__input--sort">
                                                 <option value="title-ascending" selected="selected">Sort</option>
                                                 <option>Best Selling</option>
                                                 <option>Alphabetically, A-Z</option>
@@ -116,11 +126,10 @@
                                                 <option>Price, high to low</option>
                                                 <option>Date, new to old</option>
                                                 <option>Date, old to new</option>
-                                      		</select>
-                                      		<input class="collection-header__default-sort" type="hidden" value="manual">
+                                            </select>
+                                            <input class="collection-header__default-sort" type="hidden" value="manual">
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -128,15 +137,15 @@
                         <div class="grid-products grid--view-items">
                             <div class="row">
                                 @foreach($products as $product)
-                                <div class="col-6 col-sm-6 col-md-4 col-lg-3 grid-view-item style2 item">
-                                	<div class="grid-view_image">
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-3 grid-view-item style2 item">
+                                    <div class="grid-view_image">
                                         <!-- start product image -->
                                         <a href="" class="grid-view-item__link">
                                             <!-- image -->
-                                            <img class="grid-view-item__image primary blur-up lazyload" src="{{asset('assets/images/product-images/product-image1.jpg')}}" alt="image" title="product">
+                                            <img class="grid-view-item__image primary blur-up lazyload" src="{{ asset('storage/images/' . $product->image) }}" alt="image" title="product">
                                             <!-- End image -->
                                             <!-- Hover image -->
-                                            <img class="grid-view-item__image hover blur-up lazyload"src="{{asset('assets/images/product-images/product-image1-1.jpg')}}" alt="image" title="product">
+                                            <img class="grid-view-item__image hover blur-up lazyload"src="{{ asset('storage/images/' . $product->image) }}" alt="image" title="product">
                                             <!-- End hover image -->
                                         </a>
                                         <!-- end product image -->
@@ -150,7 +159,6 @@
                                             <!-- End product name -->
                                             <!-- product price -->
                                             <div class="product-price">
-
                                                 <span class="price">{{$product->price}}</span>
                                             </div>
                                             <!-- End product price -->
@@ -164,21 +172,22 @@
                                             <!-- product button -->
                                             <div class="button-set">
                                                 <a href="#content_quickview" title="Quick View" class="quick-view-popup quick-view" tabindex="0">
-                                                	<i class="icon anm anm-search-plus-r"></i>
-                                            	</a>
+                                                    <i class="icon anm anm-search-plus-r"></i>
+                                                </a>
                                                 <!-- Start product button -->
                                                 <button class="add-to-cart" data-product-id="{{ $product->id }}"><i class="icon anm anm-bag-l"></i></button>
                                                 <form action="{{ route('wishlist.add', $product->id) }}" method="POST">
-                                                   @csrf
+                                                    @csrf
                                                     <button type="submit" class="wishlist add-to-wishlist"><i class="icon anm anm-heart-l"></i></button>
                                                 </form>
-                                            <!-- end product button -->
+                                                <!-- end product button -->
+                                            </div>
+                                            <!-- End product details -->
                                         </div>
-                                        <!-- End product details -->
                                     </div>
                                 </div>
                                 @endforeach
-                               
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -188,38 +197,50 @@
     </div>
     <!--End Body Content-->
     
-
-
     @include('navigation.footer')
 
-<!--Scoll Top-->
-<span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
-<!--End Scoll Top-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--Scroll Top-->
+    <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
+    <!--End Scroll Top-->
+<!-- Example product view -->
+
+
 <script>
-$(document).ready(function(){
-    $('.add-to-cart').on('click', function(){
-        var productId = $(this).data('product-id');
-        $.ajax({
-            url: '{{ route("add.to.cart") }}',
-            method: 'POST',
-            data: {
-                _token: '{{ csrf_token() }}',
-                product_id: productId,
-                quantity: 1 // You can make this dynamic as needed
-            },
-            success: function(response) {
-                if (response.status === 'success') {
+    $(document).ready(function () {
+        $('.add-to-cart').click(function () {
+            var productId = $(this).data('product-id');
+
+            $.ajax({
+                url: '{{ route('cart.add') }}',
+                method: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    product_id: productId,
+                    quantity: 1 // Assuming default quantity is 1
+                },
+                success: function (response) {
                     alert(response.message);
-                    // Update cart count
-                    $('.cart-count').text(response.cartCount);
-                } else {
-                    alert('Failed to add product to cart');
+                    updateCartCount(response.cart_count);
+                    updateQuantityInCart(productId, 1); // Update quantity in cart section
+                },
+                error: function (xhr) {
+                    alert(xhr.responseJSON.message);
                 }
-            }
+            });
         });
+
+        function updateQuantityInCart(productId, quantity) {
+            // Example: Update quantity in cart section after adding to cart
+            var cartItemRow = $('#cart-item-' + productId);
+            if (cartItemRow.length > 0) {
+                var quantityField = cartItemRow.find('.quantity');
+                quantityField.val(quantity); // Update quantity field in cart section
+            } else {
+                // Handle case where product is not initially in cart section
+                // You may optionally reload or refresh the cart section here
+            }
+        }
     });
-});
 </script>
 
 </div>
