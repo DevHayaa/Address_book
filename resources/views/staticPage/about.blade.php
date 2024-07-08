@@ -3,26 +3,7 @@
 <head>
 <title>ABout Us</title>
 @include('./cssjss')
-</head>
-<div class="pageWrapper">
-	@include('./navigation.header')
-    
-    <!--Body Content-->
-    <div id="page-content">
-    	<!--Page Title-->
-    	<div class="page section-header text-center">
-			<div class="page-title">
-        		<div class="wrapper"><h1 class="page-width">About Us</h1></div>
-      		</div>
-		</div>
-        <!--End Page Title-->
-        <div class="bredcrumbWrap">
-            <div class="container breadcrumbs">
-                <a href="#" title="Back to the home page">Home</a><span aria-hidden="true">›</span><span>About Us</span>
-            </div>
-        </div>
-        
-        <style>
+<style>
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -69,6 +50,7 @@
         .team h2 {
             font-size: 2em;
             color: #ff8c94;
+            text-align:center;
         }
         .team .member {
             margin: 20px 0;
@@ -88,6 +70,13 @@
             margin: 0 auto;
         }
     </style>
+</head>
+<div class="pageWrapper">
+	@include('./navigation.header')
+    
+    <!--Body Content-->
+    <div id="page-content">
+       
 </head>
 <body>
     <div class="container">

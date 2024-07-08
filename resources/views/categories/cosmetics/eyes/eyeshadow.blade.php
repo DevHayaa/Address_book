@@ -14,14 +14,30 @@
         .product-details {
             padding: 10px;
         }
+        button.add-to-cart{
+            cursor:pointer;
+            height:35px;
+            width:35px;
+        }
+        button.add-to-cart:hover{
+           transform:scale(1.1);
+        }
+        button.add-to-wishlist{
+            cursor:pointer;
+            height:40px;
+            width:40px;
+        }
+        button.add-to-wishlist:hover{
+           transform:scale(1.1);
+        }
     </style>
 </head>
 <div class="pageWrapper">
     @include('../navigation.header')
     <!--Body Content-->
     <div id="page-content">
-        <!--Collection Banner-->
-        <div class="collection-header">
+              <!--Collection Banner-->
+              <div class="collection-header">
             <div class="collection-hero">
                 <div class="collection-hero__image"><img class="blur-up lazyload" src="{{asset('assets/images/cat-women2.jpg')}}" alt="Women" title="Women" /></div>
                 <div class="collection-hero__title-wrapper"><h1 class="collection-hero__title page-width">Eye Shadow</h1></div>
@@ -31,109 +47,9 @@
         
         <div class="container-fluid">
             <div class="row">
-                <!--Sidebar-->
-                <div class="col-12 col-sm-12 col-md-3 col-lg-2 sidebar filterbar mt-3">
-                    <div class="closeFilter d-block d-md-none d-lg-none"><i class="icon icon anm anm-times-l"></i></div>
-                    <div class="sidebar_tags">
-                        <!--Price Filter-->
-                        <div class="sidebar_widget filterBox filter-widget">
-                            <div class="widget-title">
-                                <h2>Price</h2>
-                            </div>
-                            <form action="#" method="post" class="price-filter">
-                                <div id="slider-range" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
-                                    <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
-                                    <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
-                                    <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <p class="no-margin"><input id="amount" type="text"></p>
-                                    </div>
-                                    <div class="col-6 text-right margin-25px-top">
-                                        <button class="btn btn-secondary btn--small">filter</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <!--End Price Filter-->
-                        <!--Size Swatches-->
-                        <div class="sidebar_widget filterBox filter-widget size-swacthes">
-                            <div class="widget-title"><h2>Size</h2></div>
-                            <div class="filter-color swacth-list">
-                                <ul>
-                                    <li><span class="swacth-btn checked">X</span></li>
-                                    <li><span class="swacth-btn">XL</span></li>
-                                    <li><span class="swacth-btn">XLL</span></li>
-                                    <li><span class="swacth-btn">M</span></li>
-                                    <li><span class="swacth-btn">L</span></li>
-                                    <li><span class="swacth-btn">S</span></li>
-                                    <li><span class="swacth-btn">XXXL</span></li>
-                                    <li><span class="swacth-btn">XXL</span></li>
-                                    <li><span class="swacth-btn">XS</span></span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!--End Size Swatches-->
-                        <!--Color Swatches-->
-                        <div class="sidebar_widget filterBox filter-widget">
-                            <div class="widget-title"><h2>Color</h2></div>
-                            <div class="filter-color swacth-list clearfix">
-                                <span class="swacth-btn black"></span>
-                                <span class="swacth-btn white checked"></span>
-                                <span class="swacth-btn red"></span>
-                                <span class="swacth-btn blue"></span>
-                                <span class="swacth-btn pink"></span>
-                                <span class="swacth-btn gray"></span>
-                                <span class="swacth-btn green"></span>
-                                <span class="swacth-btn orange"></span>
-                                <span class="swacth-btn yellow"></span>
-                                <span class="swacth-btn blueviolet"></span>
-                                <span class="swacth-btn brown"></span>
-                                <span class="swacth-btn darkGoldenRod"></span> 
-                                <span class="swacth-btn darkGreen"></span> 
-                                <span class="swacth-btn darkRed"></span> 
-                                <span class="swacth-btn dimGrey"></span>
-                                <span class="swacth-btn khaki"></span> 
-                            </div>
-                        </div>
-                        <!--End Color Swatches-->
-                        <!--Banner-->
-                        <div class="sidebar_widget static-banner">
-                            <img src="assets/images/side-banner-2.jpg" alt="" />
-                        </div>
-                        <!--Banner-->
-                    </div>
-                </div>
-                <!--End Sidebar-->
                 <!--Main Content-->
                 <div class="col-12 col-sm-12 col-md-9 col-lg-10 main-col">
                     <div class="productList">
-                        <!--Toolbar-->
-                        <button type="button" class="btn btn-filter d-block d-md-none d-lg-none"> Product Filters</button>
-                        <div class="toolbar">
-                            <div class="filters-toolbar-wrapper">
-                                <div class="row">
-                                    <div class="col-4 col-md-4 col-lg-4 text-right m-3">
-                                        <div class="filters-toolbar__item">
-                                            <label for="SortBy" class="hidden">Sort</label>
-                                            <select name="SortBy" id="SortBy" class="filters-toolbar__input filters-toolbar__input--sort">
-                                                <option value="title-ascending" selected="selected">Sort</option>
-                                                <option>Best Selling</option>
-                                                <option>Alphabetically, A-Z</option>
-                                                <option>Alphabetically, Z-A</option>
-                                                <option>Price, low to high</option>
-                                                <option>Price, high to low</option>
-                                                <option>Date, new to old</option>
-                                                <option>Date, old to new</option>
-                                            </select>
-                                            <input class="collection-header__default-sort" type="hidden" value="manual">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--End Toolbar-->
                         <div class="grid-products grid--view-items">
                             <div class="row">
                                 @foreach($products as $product)
@@ -171,9 +87,6 @@
                                             </div>
                                             <!-- product button -->
                                             <div class="button-set">
-                                                <a href="#content_quickview" title="Quick View" class="quick-view-popup quick-view" tabindex="0">
-                                                    <i class="icon anm anm-search-plus-r"></i>
-                                                </a>
                                                 <!-- Start product button -->
                                                 <button class="add-to-cart" data-product-id="{{ $product->id }}"><i class="icon anm anm-bag-l"></i></button>
                                                 <form action="{{ route('wishlist.add', $product->id) }}" method="POST">
@@ -202,7 +115,10 @@
     <!--Scroll Top-->
     <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
     <!--End Scroll Top-->
-    <script>
+<!-- Example product view -->
+
+
+<script>
     $(document).ready(function () {
         $('.add-to-cart').click(function () {
             var productId = $(this).data('product-id');

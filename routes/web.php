@@ -61,6 +61,10 @@ Route::prefix('admin')->name('admin.')->group(function() {
     Route::get('/wishlists', [AdminWishlistController::class, 'index'])->name('wishlist.index');
     Route::delete('/wishlists/{id}', [AdminWishlistController::class, 'destroy'])->name('wishlist.destroy');
 });
+Route::middleware(['auth'])->group(function () {
+    Route::post('/wishlist/move-to-cart/{product}', [WishlistController::class, 'moveToCart'])->name('wishlist.moveToCart');
+});
+
 
 // product
 Route::middleware(['auth'])->group(function () {

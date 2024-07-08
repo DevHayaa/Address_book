@@ -1,7 +1,7 @@
 
 <div class="">
   <!-- Footer -->
-  <footer class="text-center text-white">
+  <footer class="text-center text-white" style="background-color:black">
     <!-- Grid container -->
     <div class="container">
       <!-- Section: Links -->
@@ -11,7 +11,7 @@
           <!-- Grid column -->
           <div class="col-md-2">
             <h6 class="text-uppercase font-weight-bold">
-              <a href="#!" class="text-white">About us</a>
+              <a href="{{route('about')}}" class="text-white">About us</a>
             </h6>
           </div>
           <!-- Grid column -->
@@ -27,7 +27,7 @@
           <!-- Grid column -->
           <div class="col-md-2">
             <h6 class="text-uppercase font-weight-bold">
-              <a href="#!" class="text-white">My Account</a>
+              <a href="{{route('user.dashboard')}}" class="text-white">My Account</a>
             </h6>
           </div>
           <!-- Grid column -->
@@ -35,7 +35,7 @@
           <!-- Grid column -->
           <div class="col-md-2">
             <h6 class="text-uppercase font-weight-bold">
-              <a href="#!" class="text-white">CheckOut</a>
+              <a href="{{route('checkout')}}" class="text-white">CheckOut</a>
             </h6>
           </div>
           <!-- Grid column -->
@@ -43,7 +43,7 @@
           <!-- Grid column -->
           <div class="col-md-2">
             <h6 class="text-uppercase font-weight-bold">
-              <a href="#!" class="text-white">Contact</a>
+              <a href="{{route('contact')}}" class="text-white">Contact</a>
             </h6>
           </div>
           <!-- Grid column -->

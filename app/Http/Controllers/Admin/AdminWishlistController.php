@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Product;
 use App\Models\Wishlist;
+use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
 
 
 class AdminWishlistController extends Controller
@@ -22,4 +25,5 @@ class AdminWishlistController extends Controller
 
         return redirect()->route('admin.wishlist.index')->with('success', 'Wishlist item deleted successfully.');
     }
+ 
 }

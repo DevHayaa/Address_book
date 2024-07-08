@@ -12,7 +12,7 @@
     @include('../navigation.header')
     <!--Body Content-->
     @php
-    $cartCount = count($cartItems); // Assuming $cartItems is passed from controller
+    $cartCount = count($cartItems); 
 @endphp
     <div id="page-content">
               <!--Collection Banner-->
@@ -45,6 +45,7 @@
                     </td>
                     <td>{{ $cartItem->product->product_name }}</td>
                     <td>${{ $cartItem->product->price }}</td>
+                    
                     <td>
                         <input type="number" class="form-control quantity" value="{{ $cartItem->quantity }}" data-product-id="{{ $cartItem->product_id }}">
                     </td>

@@ -1,4 +1,10 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <title>AddCategory</title>
+</head>
 @include('adminCssJs')
+<Body>
 <div class="page-content">
         <!-- Page Header-->
         <div class="page-header no-margin-bottom">
@@ -34,3 +40,5 @@
                 </div>
               </div>
 </div>
+</body>
+</html>

@@ -1675,3 +1675,19 @@ footer{
   background-color: black;
 }
 
+button.add-to-cart{
+  cursor:pointer;
+  height:35px;
+  width:35px;
+}
+button.add-to-cart:hover{
+ transform:scale(1.1);
+}
+button.add-to-wishlist{
+  cursor:pointer;
+  height:40px;
+  width:40px;
+}
+button.add-to-wishlist:hover{
+ transform:scale(1.1);
+}

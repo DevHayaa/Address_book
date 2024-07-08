@@ -1,7 +1,10 @@
-
-
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <title>Cart</title>
+</head>
 @include('adminCssJs')
-
+<Body>
 <div class="page-content">
     <!-- Page Header -->
     <div class="page-header no-margin-bottom"></div>
@@ -50,3 +53,5 @@
         </div>
     </section>
 </div>
+</Body>
+</html>

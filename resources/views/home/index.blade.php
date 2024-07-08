@@ -53,7 +53,7 @@
         </div>
         <!--End Home slider-->
     
-        <!--New Arrivals-->
+        <!--All products-->
         <div class="product-rows section">
         	<div class="container">
             	<div class="row">
@@ -103,9 +103,6 @@
                             </div>
                             <!-- product button -->
                             <div class="button-set">
-                                <a href="#content_quickview" title="Quick View" class="quick-view-popup quick-view" tabindex="0">
-                                    <i class="icon anm anm-search-plus-r"></i>
-                                </a>
                                 <!-- Start product button -->
                                 <button class="add-to-cart" data-product-id="{{ $product->id }}"><i class="icon anm anm-bag-l"></i></button>
                                 <form action="{{ route('wishlist.add', $product->id) }}" method="POST" class="d-inline">
@@ -141,7 +138,7 @@
                         <div class="wrap-text left text-small font-bold">
                             <h2 class="h2 mega-title">Gems&Glow <br> The best choice for your store</h2>
                             <div class="rte-setting mega-subtitle">>Explore a world of beauty and elegance with Gems & Glow. We specialize in offering exquisite cosmetics and imitation jewelry that reflect your unique style and enhance your natural beauty.</div>
-                            <a href="#" class="btn">Purchase Now</a>
+                            <a href="{{route('about')}}" class="btn">Explore Now</a>
                         </div>
                     </div>
                 </div>

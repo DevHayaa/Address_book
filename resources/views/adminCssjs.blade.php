@@ -1,6 +1,8 @@
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="/adminCss/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
+     <!-- Favicon -->
+    <link rel="shortcut icon" href="{{asset('assets/images/favicon.png')}}" />
     <link rel="stylesheet" href="/adminCss/vendor/font-awesome/css/font-awesome.min.css">
     <!-- Custom Font Icons CSS-->
     <link rel="stylesheet" href="/adminCss/css/font.css">

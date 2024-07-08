@@ -56,7 +56,7 @@ class SubCategoryController extends Controller
         $data->subCategory_description = $request->description;
         $data->category_id = $request->category_id; // Update the category_id
         $data->save();
-        toastr()->timeOut(1000)->closeButton()->success('SubCategory edited successfully.');
+        toastr()->timeOut(1000)->closeButton()->success('SubCategory Updated successfully.');
         return redirect('/subCategory');
     }
 

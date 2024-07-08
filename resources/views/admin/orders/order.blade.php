@@ -1,4 +1,10 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <title>Order</title>
+</head>
 @include('adminCssJs')
+<Body>
 
 <div class="page-content">
     <!-- Page Header-->
@@ -50,3 +56,5 @@
         </div>
     </section>
 </div>
+</body>
+</html>

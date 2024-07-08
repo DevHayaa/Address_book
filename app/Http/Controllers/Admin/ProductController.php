@@ -56,8 +56,8 @@ class ProductController extends Controller
             'image' => $imageName,
             'subcategory_id' => $request->subcategory_id,
         ]);
-
-        return redirect()->route('products')->with('success', 'Product added successfully.');
+        toastr()->timeOut(1000)->closeButton()->success('product added succesfully.');
+        return redirect()->route('products');
     }
 
     public function editProduct($id)
@@ -100,8 +100,8 @@ class ProductController extends Controller
             'image' => $imageName,
             'subcategory_id' => $request->subcategory_id,
         ]);
-
-        return redirect()->route('products')->with('success', 'Product updated successfully.');
+        toastr()->timeOut(1000)->closeButton()->success('Product Updated succesfully.');
+        return redirect()->route('products');
     }
 
     public function deleteProduct($id)
@@ -114,8 +114,8 @@ class ProductController extends Controller
         }
 
         $product->delete();
-
-        return redirect()->route('products')->with('success', 'Product deleted successfully.');
+        toastr()->timeOut(1000)->closeButton()->success('Product Deleted succesfully.');
+        return redirect()->route('products');
     }
     public function search(Request $request)
     {
@@ -138,29 +138,6 @@ public function show($id)
     return view('product.show', compact('product'));
 }
 
-// public function top_product()
-// {
-//     $product = DB::table('products')->join('orders_item','products.id',"=","orders_item.product_id")
-//     ->groupBy('orders_item.product_id')
-//     ->get();
-//     return view('product', compact('products'));
-// }
-// public function generateTopSellingProductsPdf()
-// {
-//     // Retrieve the top 10 selling products
-//     $topProducts = Product::orderBy('sales', 'desc')->take(10)->get();
-
-//     // Load a Blade view and pass the products data to it
-//     $pdf = Pdf::loadView('admin.reports.topSellingProducts', compact('topProducts'));
-
-//     // Download the PDF with a specific filename
-//     return $pdf->download('top_selling_products.pdf');
-// }
 }
-
-// $product = DB::table('products')->join('orders_item','products.id',"=","orders_item.product_id")
-// ->groupBy('orders_item.product_id')
-
-// ->get();
 
 
