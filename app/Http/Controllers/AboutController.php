@@ -10,8 +10,5 @@ class AboutController extends Controller
     {
         return view('staticPage.about');
     }
-    public function contact()
-    {
-        return view('staticPage.contact');
-    }
+    
 }

@@ -1,8 +1,6 @@
 
 <!DOCTYPE html>
 <html class="no-js" lang="en">
-
-<!-- belle/login.html   11 Nov 2019 12:22:27 GMT -->
 <head>
 @include('cssjss')
 </head>
@@ -65,19 +63,5 @@
     <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
     <!--End Scoll Top-->
     
-     <!-- Including Jquery -->
-     <script src="assets/js/vendor/jquery-3.3.1.min.js"></script>
-     <script src="assets/js/vendor/jquery.cookie.js"></script>
-     <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
-     <script src="assets/js/vendor/wow.min.js"></script>
-     <!-- Including Javascript -->
-     <script src="assets/js/bootstrap.min.js"></script>
-     <script src="assets/js/plugins.js"></script>
-     <script src="assets/js/popper.min.js"></script>
-     <script src="assets/js/lazysizes.js"></script>
-     <script src="assets/js/main.js"></script>
-</div>
 </body>
-
-<!-- belle/login.html   11 Nov 2019 12:22:27 GMT -->
 </html>

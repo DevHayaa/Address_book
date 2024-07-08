@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
+    public function contact()
+    {
+        return view('staticPage.contact');
+    }
     public function showForm()
     {
         return view('staticPage.contact');

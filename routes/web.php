@@ -30,7 +30,6 @@ route::get('jewellery/earRings',[JewelleryController::class,'earRings'])->name('
 route::get('jewellery/bangles',[JewelleryController::class,'bangles'])->name('bangles');
 route::get('jewellery/necklace',[JewelleryController::class,'necklace'])->name('necklace');
 route::get('about',[AboutController::class,'about'])->name('about');
-route::get('contact',[AboutController::class,'contact'])->name('contact');
 
 // admin category
 route::get('category',[CategoryController::class,'category'])->name('category');
@@ -89,6 +88,8 @@ Route::get('/thankyou', function () {
 //contact
 Route::get('/contact', [ContactController::class, 'showForm'])->name('contact.show');
 Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+route::get('contact',[ContactController::class,'contact'])->name('contact');
+
 
 //admin Contact
 Route::get('/contacts', [AdminContactController::class, 'index'])->name('contacts.index');

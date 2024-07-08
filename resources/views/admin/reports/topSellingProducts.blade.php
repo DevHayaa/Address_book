@@ -1,5 +1,10 @@
-
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <title>TopSellingProduct</title>
+</head>
 @include('adminCssJs')
+<body>
 <div class="page-content">
     <!-- Page Header-->
     <div class="page-header no-margin-bottom">
@@ -49,4 +54,5 @@
         </div>
     </section>
 </div>
-
+</body>
+</html>
