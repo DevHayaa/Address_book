@@ -110,6 +110,10 @@ Route::post('/admin/orders/update-status', [AdminOrderController::class, 'update
 Route::get('/admin/top-selling-products', [HomeController::class, 'showTopSellingProducts'])->name('admin.topSellingProducts');
 Route::get('/admin/top-selling-products/pdf', [HomeController::class, 'generateTopSellingProductsPdf'])->name('admin.topSellingProductsPdf');
 
+//top Client 
+Route::get('admin/reports/top-clients', [HomeController::class, 'topClients'])->name('admin.reports.top_clients');
+Route::get('admin/reports/top-clients/pdf', [HomeController::class, 'generateTopClientsPDF'])->name('admin.reports.top_clients_pdf');
+
 // Admin Authentication Routes
 Route::get('/admin/login', [AdminLoginController::class, 'index'])->name('admin.login')->middleware('clear_cookies');;
 Route::post('/admin/check', [AdminLoginController::class, 'admincheck'])->name('admin.check');

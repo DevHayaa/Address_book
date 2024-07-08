@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use PDF;
+use App\Models\User;
 use App\Models\Product;
 use App\Models\SubCategory;
 use Illuminate\Support\Facades\DB;
@@ -46,6 +47,33 @@ class HomeController extends Controller
 
         $pdf = PDF::loadView('admin.reports.topSellingProductsPdf', compact('topProducts'));
         return $pdf->download('top_selling_products.pdf');
+    }
+    public function topClients()
+    {
+        $topClients = User::select('users.id', 'users.name', 'users.email')
+            ->join('orders', 'users.id', '=', 'orders.user_id')
+            ->selectRaw('SUM(orders.total_price) as total_spent') // Correct column name here
+            ->groupBy('users.id', 'users.name', 'users.email')
+            ->orderByDesc('total_spent')
+            ->limit(10)
+            ->get();
+
+        return view('admin.reports.top_clients', compact('topClients'));
+    }
+
+    public function generateTopClientsPDF()
+    {
+        $topClients = User::select('users.id', 'users.name', 'users.email')
+            ->join('orders', 'users.id', '=', 'orders.user_id')
+            ->selectRaw('SUM(orders.total_price) as total_spent') // Correct column name here
+            ->groupBy('users.id', 'users.name', 'users.email')
+            ->orderByDesc('total_spent')
+            ->limit(10)
+            ->get();
+
+        $pdf = PDF::loadView('admin.reports.top_clients_pdf', compact('topClients'));
+
+        return $pdf->download('top_clients_report.pdf');
     }
    
    

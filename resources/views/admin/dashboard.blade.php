@@ -52,7 +52,8 @@
                   <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                     <li><a href="{{route('admin.orders')}}">Order</a></li>
                     <li><a href="{{route('admin.order-items')}}">Order Items</a></li>
-                 
+                    <li><a href="{{route('admin. admin.reports.top_clients')}}">Top 10 client</a></li>
+                   
                   </ul>
                 </li>
         
