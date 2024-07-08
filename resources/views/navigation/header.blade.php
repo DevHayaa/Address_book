@@ -4,7 +4,7 @@
         <form action="{{ route('product.search') }}" method="GET" class="search-panel">
             <div class="search-inner d-flex align-items-center justify-content-center">
                 <div class="close-btn">Close <i class="fa fa-close"></i></div>
-                <div class="form-group">
+                <div class="form-group d-flex">
                     <input type="search" name="query" placeholder="What are you searching for...">
                     <button type="submit" class="submit">Search</button>
                 </div>

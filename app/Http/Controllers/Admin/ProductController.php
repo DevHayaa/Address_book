@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\SubCategory;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
@@ -136,4 +137,30 @@ public function show($id)
     $product = Product::findOrFail($id);
     return view('product.show', compact('product'));
 }
+
+// public function top_product()
+// {
+//     $product = DB::table('products')->join('orders_item','products.id',"=","orders_item.product_id")
+//     ->groupBy('orders_item.product_id')
+//     ->get();
+//     return view('product', compact('products'));
+// }
+// public function generateTopSellingProductsPdf()
+// {
+//     // Retrieve the top 10 selling products
+//     $topProducts = Product::orderBy('sales', 'desc')->take(10)->get();
+
+//     // Load a Blade view and pass the products data to it
+//     $pdf = Pdf::loadView('admin.reports.topSellingProducts', compact('topProducts'));
+
+//     // Download the PDF with a specific filename
+//     return $pdf->download('top_selling_products.pdf');
+// }
 }
+
+// $product = DB::table('products')->join('orders_item','products.id',"=","orders_item.product_id")
+// ->groupBy('orders_item.product_id')
+
+// ->get();
+
+

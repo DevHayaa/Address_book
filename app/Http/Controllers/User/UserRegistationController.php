@@ -27,4 +27,7 @@ class UserRegistationController extends Controller
       ]);
        return view('user.thank');
     }
+    public function dashboard(){
+        return view('user.dashboard');
+    }
 }

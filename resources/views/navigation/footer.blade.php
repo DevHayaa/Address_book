@@ -1,7 +1,7 @@
-<!-- Remove the container if you want to extend the Footer to full width. -->
+
 <div class="">
   <!-- Footer -->
-  <footer class="text-center text-white" style="background-color: lightgrey">
+  <footer class="text-center text-white">
     <!-- Grid container -->
     <div class="container">
       <!-- Section: Links -->

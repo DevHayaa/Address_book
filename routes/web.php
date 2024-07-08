@@ -23,7 +23,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Middleware\ClearCookies;
 
-route::get('/',[HomeController::class,'home'])->name('home');
+route::get('/',[HomeController::class,'index'])->name('home');
 route::get('jewellery/anklets',[JewelleryController::class,'anklets'])->name('anklets');
 route::get('jewellery/rings',[JewelleryController::class,'rings'])->name('rings');
 route::get('jewellery/earRings',[JewelleryController::class,'earRings'])->name('earRings');
@@ -89,14 +89,21 @@ Route::post('/contact', [ContactController::class, 'send'])->name('contact.send'
 //admin Contact
 Route::get('/contacts', [AdminContactController::class, 'index'])->name('contacts.index');
 
+//order
 Route::get('/admin/orders', [AdminOrderController::class, 'showOrders'])->name('admin.orders');
 Route::get('/admin/order-items', [AdminOrderController::class, 'index'])->name('admin.order-items');
 
 Route::get('/admin/cart', [AdminOrderController::class,'showCart'])->name('admin.cart');
 
+//search product
 Route::get('/products/search', [ProductController::class,'search'])->name('product.search');
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('product.show');
 
+Route::post('/admin/orders/update-status', [AdminOrderController::class, 'updateStatus'])->name('admin.orders.update-status');
+
+//top selling product
+Route::get('/admin/top-selling-products', [HomeController::class, 'showTopSellingProducts'])->name('admin.topSellingProducts');
+Route::get('/admin/top-selling-products/pdf', [HomeController::class, 'generateTopSellingProductsPdf'])->name('admin.topSellingProductsPdf');
 
 // Admin Authentication Routes
 Route::get('/admin/login', [AdminLoginController::class, 'index'])->name('admin.login')->middleware('clear_cookies');;
@@ -111,7 +118,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 Route::post('logout', [LoginController::class, 'logout'])->middleware('clear.session.cookies')->name('logout');
 
 
-
+//cosmetics
 Route::get('/cosmetics/nail-paints', [CosmeticsController::class, 'nailPaints'])->name('nailPaints');
 Route::get('/cosmetics/nail-paint-remover', [CosmeticsController::class, 'nailPaintRemover'])->name('nailPaintRemover');
 Route::get('/cosmetics/lip-tint', [CosmeticsController::class, 'lipTint'])->name('lipTint');
@@ -126,18 +133,15 @@ Route::get('/cosmetics/foundation', [CosmeticsController::class, 'foundation'])-
 Route::get('/cosmetics/face-powder', [CosmeticsController::class, 'facePowder'])->name('facePowder');
 Route::get('/cosmetics/blush-on', [CosmeticsController::class, 'blushOn'])->name('blushOn');
 
-
-
-
 // User Authentication Routes
+//middleware implementation
 Route::get('/login', [UserLoginController::class, 'index'])->name('login')->middleware('clear_cookies');;
 Route::post('/check', [UserLoginController::class, 'check'])->name('check');
 Route::get('/register', [UserRegistationController::class, 'create'])->name('register');
 Route::post('/register', [UserRegistationController::class, 'store'])->name('user.register');
-//middleware implementation
 Route::middleware(['auth', 'user'])->group(function () {
     
- Route::get('/user/dashboard', [UserDashBoardController::class, 'dashboard'])->name('user.dashboard');
+ Route::get('/user/dashboard', [UserRegistationController::class, 'dashboard'])->name('user.dashboard');
  Route::get('/records', [RecordViewController::class, 'index'])->name('record.index');
  Route::post('/logout', [UserLoginController::class, 'logout'])->name('user.logout')->middleware('clear_cookies');
 });

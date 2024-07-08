@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
-<!-- belle/login.html   11 Nov 2019 12:22:27 GMT -->
 <head>
 @include('cssjss')
 </head>
@@ -26,7 +25,7 @@
         	<div class="row">
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 main-col offset-md-3">
                 	<div class="mb-4">
-                       <form action="{{ route('admin.check') }}" method="POST" id="CustomerLoginForm" accept-charset="UTF-8" class="contact-form">	
+                       <form action="{{ route('check') }}" method="POST" id="CustomerLoginForm" accept-charset="UTF-8" class="contact-form">	
                        {!! csrf_field() !!}  
                        <div class="row">
                         
@@ -48,7 +47,7 @@
                                 <input type="submit" class="btn mb-3" value="Sign In">
                                 <p class="mb-4">
 									<a href="#" id="RecoverPassword">Forgot your password?</a> &nbsp; | &nbsp;
-								    <a href="{{route('admin.register')}}" id="customer_register_link">Create account</a>
+								    <a href="{{route('user.register')}}" id="customer_register_link">Create account</a>
                                 </p>
                             </div>
                          </div>
