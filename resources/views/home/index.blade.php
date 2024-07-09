@@ -285,8 +285,6 @@
 </script>
 </div>
 </body>
-
-<!-- belle/home8-jewellery.html   11 Nov 2019 12:31:16 GMT -->
 </html>
 
 

@@ -154,3 +154,5 @@ Route::middleware(['auth', 'user'])->group(function () {
  Route::get('/records', [RecordViewController::class, 'index'])->name('record.index');
  Route::post('/logout', [UserLoginController::class, 'logout'])->name('user.logout')->middleware('clear_cookies');
 });
+
+Route::get('admin/dashboard', [AdminDashboardController::class, 'charts'])->name('admin.dashboard');

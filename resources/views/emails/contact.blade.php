@@ -1,4 +1,3 @@
-<!-- resources/views/emails/contact.blade.php -->
 <p>You have received a new contact form submission:</p>
 <p><strong>Name:</strong> {{ $contact['name'] }}</p>
 <p><strong>Email:</strong> {{ $contact['email'] }}</p>

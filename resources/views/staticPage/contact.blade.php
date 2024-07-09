@@ -16,23 +16,6 @@
       		</div>
 		</div>
         <!--End Page Title-->
-        <div class="map-section map">
-        	<iframe src="https://www.google.com/maps/embed?pb=" height="350" allowfullscreen></iframe>
-            <div class="container">
-            	<div class="row">
-                	<div class="map-section__overlay-wrapper">
-                        <div class="map-section__overlay">
-                            <h3 class="h4">Our store</h3>
-                            <div class="rte-setting">
-                                <p>123 Fake St.<br>Toronto, Canada</p>
-                                <p>Mon - Fri, 10am - 9pm<br>Saturday, 11am - 9pm<br>Sunday, 11am - 5pm</p>
-                            </div>
-                            <p><a href="https://maps.google.com/?daddr=80%20Spadina%20Ave,%20Toronto" class="btn btn--secondary btn--small" target="_blank">Get directions</a></p>
-                        </div>
-                   	</div>
-                </div>
-            </div>
-        </div>
         <div class="bredcrumbWrap">
             <div class="container breadcrumbs">
                 <a href="index.html" title="Back to the home page">Home</a><span aria-hidden="true">›</span><span>Contact Us</span>
@@ -96,7 +79,7 @@
                     <ul class="addressFooter">
                         <li><i class="icon anm anm-map-marker-al"></i><p>55 Gallaxy Enque, 2568 steet, 23568 NY</p></li>
                         <li class="phone"><i class="icon anm anm-phone-s"></i><p>(440) 000 000 0000</p></li>
-                        <li class="email"><i class="icon anm anm-envelope-l"></i><p>sales@yousite.com</p></li>
+                        <li class="email"><i class="icon anm anm-envelope-l"></i><p>Gems&Glow@gmail.com</p></li>
                     </ul>
                     <hr />
                     <ul class="list--inline site-footer__social-icons social-icons">
